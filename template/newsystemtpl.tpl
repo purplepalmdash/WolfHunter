@@ -1,4 +1,17 @@
 %#template for serving the addsystem webpage
+%#TODO: The checking should be done, for checking following issues:
+%#1. NodeName has been taken
+%#2. Formats are OK for sending in forms.
+%#
+%#
+%#
+%#
+%#
+%#
+%#
+%#
+%#
+%#
 <p>See this means that you want to add a new system to Cobbler</p>
 <p>!!!Fill the following form for define this system!!!</p>
 <form actions="/newsystem" method="GET">

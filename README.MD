@@ -12,3 +12,5 @@ For installing Bottle:
 $ sudo yum -y install python-pip
 $ pip install bottle
 ```
+
+The id_pub.rsa should be inserted into the deployed system, thus we could combine the operation together with Cobbler and Ansible.   

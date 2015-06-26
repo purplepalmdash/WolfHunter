@@ -10,12 +10,14 @@ from bottle import route, run, debug, template, view, request
 # Beautify json output
 import json
 
-# Cobbler Server will be used during the lifetime of this file
+# Cobbler Server instance and token will be used during the lifetime of this file
 CobblerServer = xmlrpclib.Server("http://127.0.0.1/cobbler_api")
+token = CobblerServer.login("cobbler", "engine")
 
 # By visit http://Your_URL/system will get all of the installed system node name
 @route('/listsystem')
 def list_system():
+	print "#################Your visited listsystem############"
 	# Use an list for recording all of the single_record(which is a tuple)
 	SystemTableName = ('Node Name', 'MAC Address', 'IP Address', 'Gateway', 'Hostname', 'Profile', 'DNS Name', 'Created Time', 'Modified Time')
 	AllSystems = []
@@ -55,21 +57,16 @@ def new_system():
 		Added_Hostname = request.GET.get('Hostname','').strip()
 		Added_Profile = request.GET.get('Profile','').strip()
 		Added_DnsName = request.GET.get('DnsName','').strip()
-		print Added_NodeName
-		print Added_MacAddress
-		print Added_IpAddress
-		print Added_Gateway
-		print Added_Hostname
-		print Added_Profile
-		print Added_DnsName
+		# Really insert into the cobbler backend
 		insert_system_to_cobbler(Added_NodeName, Added_MacAddress, Added_IpAddress, Added_Gateway, Added_Hostname, Added_Profile, Added_DnsName)
 
 		# Call Wrapped Cobbler function for really add the system into the Cobbler System.
 		# TODO: We may encouter the node has been defined in the system, thus we have to hint for modifying or cancel.
 
 		# Hint the User that we've received the request and submit them to the Cobbler System.
-		# Idealy this will directly go the added systems. 
-		return '<p>Well I Know! Your System will be submmited to the Cobbler System!</p>'
+		# Idealy this will directly go the added systems. TODO: Jump to the wait page http://YourServer/NodeName.
+		# Jump to Wait Webpage and begin to detect.
+		return '<p>Now set PXE, and power on your machine and wait until you could do next step!</p>'
 	else:
 		# The Profiles should be retrived from the Cobbler System, and use template for rendering it.
 		output = template('./template/newsystemtpl')
@@ -77,16 +74,16 @@ def new_system():
 
 # Function for wrapping the Cobbler's API for inserting the definition into the Cobber System.
 # Input: NodeName, MacAddress, IpAddress, Gateway, Hostname, Profile, DnsName
+# Refers to the API from doc
 def insert_system_to_cobbler(NodeName, MacAddress, IpAddress, Gateway, Hostname, Profile, DnsName):
-	print "Yes, you are about to insert your defined system into cobbler!"
-	print NodeName
-	print MacAddress
-	print IpAddress
-	print Gateway
-	print Hostname
-	print Profile
-	print DnsName
-	print "Yes, you left this function!"
+	system_id = CobblerServer.new_system(token)
+	CobblerServer.modify_system(system_id, "name", NodeName, token)
+	CobblerServer.modify_system(system_id, 'modify_interface', {"macaddress-eth0": MacAddress, "ipaddress-eth0": IpAddress, "dnsname-eth0": DnsName,}, token)
+	CobblerServer.modify_system(system_id, "profile", Profile, token)
+	CobblerServer.modify_system(system_id, "gateway", Gateway, token)
+	CobblerServer.modify_system(system_id, "hostname", Hostname, token)
+	# After modify, sync them to the system
+	CobblerServer.save_system(system_id, token)
 
 
 # Testing  the templates
