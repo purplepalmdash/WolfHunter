@@ -1,0 +1,23 @@
+>>> import xmlrpclib
+>>> remote =  xmlrpclib.Server("http://127.0.0.1/cobbler_api")
+>>> type(remote)
+<type 'instance'>
+>>> token = remote.login("cobbler", "engine")
+>>> system_id = remote.new_system(token)                                                                                                       
+>>> remote.modify_system(system_id,"name","DoSomething", token)
+True
+>>> remote.modify_system(system_id,"hostname","DoSomething.google.com", token)
+True
+>>> remote.modify_system(system_id,'modify_interface', {"macaddress-eth0"   : "01:02:03:04:05:06","ipaddress-eth0"    : "10.47.58.77", "dnsname-eth0"      : "DoSomething",}, token)
+True
+>>> remote.modify_system(system_id,"profile","Ubuntu12.04.03-x86_64", token)
+True
+>>> remote.modify_system(system_id,"kernel_options", "foo=bar some=thing", token)
+True
+>>> remote.modify_system(system_id,"ks_meta", "foo=bar some=thing", token)
+True
+>>> remote.save_system(system_id, token)
+True
+>>> remote.sync(token)
+True
+
