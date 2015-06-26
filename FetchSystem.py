@@ -6,41 +6,37 @@
 # Use Cobbler API
 import xmlrpclib
 # Use bottle, for rendering HTML
-from bottle import route, run, debug
+from bottle import route, run, debug, template, view
 # Beautify json output
 import json
 
 # Cobbler Server will be used during the lifetime of this file
 CobblerServer = xmlrpclib.Server("http://127.0.0.1/cobbler_api")
 
-# Visit http://Your_URL/system will get all of the installed system node name
+# By visit http://Your_URL/system will get all of the installed system node name
 # Todo: 2015_06_25: Use a template for beautifully displaying these items. 
 @route('/system')
 def list_system():
-	AllSystems = 'Only Displayed the eth0 Information Currently </br>'
+	# Use an list for recording all of the single_record(which is a tuple)
+	AllSystems = []
+	# Append each record of systems into the AllSystem list.
 	for i in CobblerServer.get_systems():
-		# i in a dictionary, need to be prettified
-		# `print type(i)` result is <type 'dict'>
-		# print json.dumps(i, sort_keys=True, indent=4) +"\n##############################\n"
+		single_record = (i['name'] , i['interfaces']['eth0']['mac_address'] , i['interfaces']['eth0']['ip_address'] , i['gateway'] , i['hostname'] , i['profile'] , i['interfaces']['eth0']['dns_name'] , str(i['ctime']) , str(i['mtime']))
+		AllSystems.append(single_record)
 
-		# Display all of the interfaces
-		#print json.dumps(i['interfaces'], sort_keys=True, indent=4) + "\n######\n"
-		#print json.dumps(i['interfaces']['eth0']['ip_address'], sort_keys=True, indent=4) + "\n######\n"
-		# Following displayed all of the information currently we are interested on one single node.
-		AllSystems += i['name'] + '\t' \
-				+ i['interfaces']['eth0']['mac_address'] + '\t' \
-				+ i['interfaces']['eth0']['ip_address'] + '\t' \
-				+ i['gateway']+ '\t' \
-				+ i['hostname']+ '\t' \
-				+ i['profile']+ '\t' \
-				+ i['interfaces']['eth0']['dns_name'] + '\t' \
-				+ str(i['ctime'])+ '\t' \
-				+ str(i['mtime'])+ '\t' \
-				+ '</br>'
-
-	print AllSystems
+	# Check the result of the AllSystems
+	for i in AllSystems:
+		print i
 	#AllSystems = CobblerServer.get_systems()[0]
-	return str(AllSystems)
+	# output = template('./template/make_table', rows = AllSystems)
+	# return output
+	#return str(AllSystems)
+
+@route('/hello')
+@route('/hello/<name>')
+@view('hello_template')
+def hello(name='World'):
+	return dict(name=name)
 
 # Enable Debug
 debug(True)
