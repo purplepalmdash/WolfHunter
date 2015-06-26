@@ -6,7 +6,8 @@ function timedRefresh(timeoutPeriod) {
     setTimeout("location.reload(true);",timeoutPeriod);
 }
 </script>
-<body onload="JavaScript:timedRefresh(5000);"> 
+%# 30 seconds for wait
+<body onload="JavaScript:timedRefresh(30000);"> 
 <p>The defined system definition are as follows:</p>
 <table border="1">
 %for row in rows:
