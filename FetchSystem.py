@@ -15,11 +15,23 @@ import json
 import socket
 # Use paramiko for detect ssh connection
 import paramiko
+import time
+# Use MultiThread for spawning tasks
+import sys
+import errno
+import threading
+
 
 # Cobbler Server instance and token will be used during the lifetime of this file
 CobblerServer = xmlrpclib.Server("http://127.0.0.1/cobbler_api")
 token = CobblerServer.login("cobbler", "engine")
 #handle = capi.BootAPI()
+
+# Global variable for indicating a playbook is deployed or not
+global FinishDeploying
+FinishDeploying=0
+global DeployStarted
+DeployStarted=0
 
 # By visit http://Your_URL/system will get all of the installed system node name
 @route('/listsystem')
@@ -131,8 +143,46 @@ def node_item(NodeName):
 # Pages for serving a single node
 @route('/Deploy/<NodeName:path>', method='GET')
 def deployOn_IP(NodeName):
-	return "<p>You are going to deploy on "+ NodeName + " !!!</p>" 
-	print "You will be deploying on"+ NodeName
+	global DeployStarted
+	if request.GET.get('save','').strip():
+		if FinishDeploying == 1:
+			DeployStarted = 0
+			print "Seems your playbook deployment finished"
+			# Here we could redirect to a new webpage which indicates the statistics for this deployment. 
+			return "Check your log for fail or not"
+		else:
+			# Here the Ansible module will be called, and hint user that we are deploying, wait for succeed or fail. 
+			# a subprocess or thread will be spawned for deploying using Ansible
+			print "under deployment, please wait!"
+			if DeployStarted == 0:
+				t = clientThread(1)
+				t.start()
+				DeployStarted = 1
+			output = template('./template/underdeployment')
+			# Before teturn output, create a thread for Ansible's deployment
+			# t = clientThread(1)
+			# t.start()
+			return output
+	# Default all of the playbooks will be deplayed.
+	else:
+		# Here we provide the playbook list and let user for selecting.   
+		#FinishDeploying = 0
+		output = template('./template/deployment')
+		return output
+
+#  a client thread for changing some global status
+class clientThread(threading.Thread):
+        def __init__(self, threadid):
+                threading.Thread.__init__(self)
+
+        def run(self):
+                self.handle_task()
+
+        def handle_task(self):
+                while True:
+                        print "Print from thread!"
+                        time.sleep(1)
+
 
 # Testing  the templates
 @route('/hello')

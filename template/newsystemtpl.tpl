@@ -4,14 +4,6 @@
 %#2. Formats are OK for sending in forms.
 %#
 %#
-%#
-%#
-%#
-%#
-%#
-%#
-%#
-%#
 <p>See this means that you want to add a new system to Cobbler</p>
 <p>!!!Fill the following form for define this system!!!</p>
 <form actions="/newsystem" method="GET">
