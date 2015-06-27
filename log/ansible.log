@@ -1,0 +1,119 @@
+2015-06-28 02:29:56,973 paramiko.transport starting thread (client mode): 0x2a2d210L
+2015-06-28 02:29:56,980 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 02:29:56,982 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 02:29:56,982 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 02:29:56,982 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 02:29:57,043 paramiko.transport Switch to new keys ...
+2015-06-28 02:29:57,074 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 02:29:57,076 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 02:29:57,082 paramiko.transport userauth is OK
+2015-06-28 02:29:57,101 paramiko.transport Authentication (publickey) successful!
+2015-06-28 02:29:57,202 paramiko.transport EOF in transport thread
+2015-06-28 02:29:58,671 p=5070 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 02:29:58,671 p=5070 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 02:30:28,187 p=5070 u=root |  ok: [10.3.3.33]
+2015-06-28 02:30:28,188 p=5070 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 02:30:28,566 p=5070 u=root |  ok: [10.3.3.33]
+2015-06-28 02:30:28,567 p=5070 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-28 02:30:28,901 p=5070 u=root |  ok: [10.3.3.33]
+2015-06-28 02:33:07,081 paramiko.transport starting thread (client mode): 0x2f65210L
+2015-06-28 02:33:07,086 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 02:33:07,090 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 02:33:07,090 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 02:33:07,091 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 02:33:07,178 paramiko.transport Switch to new keys ...
+2015-06-28 02:33:07,182 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 02:33:07,183 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 02:33:07,216 paramiko.transport userauth is OK
+2015-06-28 02:33:07,238 paramiko.transport Authentication (publickey) successful!
+2015-06-28 02:33:07,339 paramiko.transport EOF in transport thread
+2015-06-28 02:33:09,222 p=7008 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 02:33:09,222 p=7008 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 02:33:12,560 p=7008 u=root |  ok: [10.3.3.33]
+2015-06-28 02:33:12,560 p=7008 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 02:33:12,837 p=7008 u=root |  ok: [10.3.3.33]
+2015-06-28 02:33:12,838 p=7008 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-28 02:33:13,103 p=7008 u=root |  ok: [10.3.3.33]
+2015-06-28 02:33:50,339 p=7618 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 02:33:50,340 p=7618 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 02:33:53,003 p=7618 u=root |  ok: [10.3.3.33]
+2015-06-28 02:33:53,004 p=7618 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 02:33:53,287 p=7618 u=root |  ok: [10.3.3.33]
+2015-06-28 02:33:53,289 p=7618 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-28 02:33:53,562 p=7618 u=root |  ok: [10.3.3.33]
+2015-06-28 02:34:43,153 p=8238 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 02:34:43,154 p=8238 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 02:34:45,443 p=8238 u=root |  fatal: [10.3.3.33] => SSH Error: Shared connection to 10.3.3.33 closed.
+It is sometimes useful to re-run the command using -vvvv, which prints SSH debug output to help diagnose the issue.
+2015-06-28 02:34:45,443 p=8238 u=root |  FATAL: all hosts have already failed -- aborting
+2015-06-28 02:34:58,920 p=8425 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 02:34:58,920 p=8425 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 02:35:01,521 p=8425 u=root |  ok: [10.3.3.33]
+2015-06-28 02:35:01,522 p=8425 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 02:35:01,854 p=8425 u=root |  ok: [10.3.3.33]
+2015-06-28 02:35:01,855 p=8425 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-28 02:35:02,085 p=8425 u=root |  ok: [10.3.3.33]
+2015-06-28 02:36:26,893 p=9449 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 02:36:26,894 p=9449 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 02:36:30,186 p=9449 u=root |  ok: [10.3.3.33]
+2015-06-28 02:36:30,188 p=9449 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 02:36:30,487 p=9449 u=root |  ok: [10.3.3.33]
+2015-06-28 02:36:30,487 p=9449 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-28 02:36:30,755 p=9449 u=root |  ok: [10.3.3.33]
+2015-06-28 02:37:24,387 paramiko.transport starting thread (client mode): 0x3af72d0L
+2015-06-28 02:37:24,396 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 02:37:24,397 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 02:37:24,397 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 02:37:24,397 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 02:37:24,472 paramiko.transport Switch to new keys ...
+2015-06-28 02:37:24,488 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 02:37:24,489 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 02:37:24,513 paramiko.transport userauth is OK
+2015-06-28 02:37:24,522 paramiko.transport Authentication (publickey) successful!
+2015-06-28 02:37:24,623 paramiko.transport EOF in transport thread
+2015-06-28 02:37:26,673 p=10031 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 02:37:26,674 p=10031 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 02:37:29,113 p=10031 u=root |  ok: [10.3.3.33]
+2015-06-28 02:37:29,115 p=10031 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 02:37:29,386 p=10031 u=root |  ok: [10.3.3.33]
+2015-06-28 02:37:29,387 p=10031 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-28 02:37:29,627 p=10031 u=root |  ok: [10.3.3.33]
+2015-06-28 02:38:19,946 p=10681 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 02:38:19,947 p=10681 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 02:38:29,183 p=10681 u=root |  changed: [10.3.3.33]
+2015-06-28 02:42:25,387 p=13332 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 02:42:25,387 p=13332 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 02:42:27,269 p=13332 u=root |  ok: [10.3.3.33]
+2015-06-28 02:47:46,308 p=16812 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 02:47:46,308 p=16812 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 02:47:48,193 p=16812 u=root |  ok: [10.3.3.33]
+2015-06-28 03:02:13,439 p=26120 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 03:02:13,439 p=26120 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 03:02:15,324 p=26120 u=root |  ok: [10.3.3.33]
+2015-06-28 03:08:46,514 p=30603 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 03:08:46,515 p=30603 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 03:08:48,427 p=30603 u=root |  ok: [10.3.3.33]
+2015-06-28 03:27:04,428 p=9973 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 03:27:04,428 p=9973 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 03:27:06,351 p=9973 u=root |  ok: [10.3.3.33]
+2015-06-28 03:28:16,260 p=10666 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 03:28:16,261 p=10666 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 03:28:18,137 p=10666 u=root |  ok: [10.3.3.33]
+2015-06-28 03:29:01,459 p=11242 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 03:29:01,459 p=11242 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 03:29:02,311 p=11242 u=root |  ok: [10.3.3.33]
+2015-06-28 03:29:53,447 p=11772 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 03:29:53,448 p=11772 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 03:29:54,310 p=11772 u=root |  ok: [10.3.3.33]
+2015-06-28 03:38:46,819 p=17516 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 03:38:46,819 p=17516 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 03:38:48,691 p=17516 u=root |  ok: [10.3.3.33]
+2015-06-28 03:39:57,886 p=17516 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 03:39:57,887 p=17516 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 03:39:59,834 p=17516 u=root |  ok: [10.3.3.33]
+2015-06-28 03:42:21,876 p=19809 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 03:42:21,877 p=19809 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 03:42:23,795 p=19809 u=root |  ok: [10.3.3.33]
+2015-06-28 03:44:18,727 p=21107 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 03:44:18,728 p=21107 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 03:44:20,632 p=21107 u=root |  ok: [10.3.3.33]

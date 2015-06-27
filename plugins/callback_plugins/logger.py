@@ -143,9 +143,9 @@ class CallbackModule(object):
                 has_errors = True
 
             msg = "Host: %s, ok: %d, failures: %d, unreachable: %d, changed: %d, skipped: %d" % (h, t['ok'], t['failures'], t['unreachable'], t['changed'], t['skipped'])
-            #append_to_log(msg)
-	    print "##########################################"
-	    print msg
-	    print "##########################################"
+            append_to_log(msg)
+	    #print "##########################################"
+	    #print msg
+	    #print "##########################################"
 
         #flush_to_database(has_errors)

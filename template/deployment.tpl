@@ -12,7 +12,11 @@
 <form actions="/deployment" method="GET">
 * CloudStack<br>
 * NTP<br>
-<input type="submit" name="save" value="Deploy">
+Username: <input name="username" type="text" /><br>
+%for playbook in playbooks:
+<input type="checkbox" name="playbook1" value="playbook1">{{playbook}}<br>
+%end
+<input type="submit" name="Deploy" value="Deploy">
 </form>
 </body>
 

@@ -32,8 +32,10 @@ from ansible import utils
 import jinja2
 from tempfile import NamedTemporaryFile
 import os
+import re
 
 
+### Definitions for Cobbler
 # Cobbler Server instance and token will be used during the lifetime of this file
 CobblerServer = xmlrpclib.Server("http://127.0.0.1/cobbler_api")
 token = CobblerServer.login("cobbler", "engine")
@@ -44,6 +46,28 @@ FinishDeploying=0
 global DeployStarted
 DeployStarted=0
 
+###  Definitions for Ansible
+# Boilerplace callbacks for stdout/stderr and log output
+utils.VERBOSITY = 0
+playbook_cb = callbacks.PlaybookCallbacks(verbose=utils.VERBOSITY)
+stats = callbacks.AggregateStats()
+runner_cb = callbacks.PlaybookRunnerCallbacks(stats, verbose=utils.VERBOSITY)
+
+# Dynamic Inventory
+# We fake a inventory file and let Ansible load if it's a real file.
+# Just don't tell Ansible that, so we don't hurt its feelings.
+inventory = """
+[customer]
+{{ public_ip_address }}
+
+[customer:vars]
+domain={{ domain_name }}
+customer_id={{ customer_id }}
+customer_name={{ customer_name }}
+customer_email={{ customer_email }}
+"""
+
+### Actual codes goes from here
 # By visit http://Your_URL/system will get all of the installed system node name
 @route('/listsystem')
 def list_system():
@@ -59,13 +83,6 @@ def list_system():
 
 	# Append SystemTableName at the first position of the AllSystems
 	AllSystems.insert(0, SystemTableName)
-
-	# !!!Debuging!!! Check the result of the AllSystems
-	### for i in AllSystems:
-	### 	for j in i:
-	### 		print j
-	### 	print i
-	### 	print "##########################"
 
 	# Use listsystemtpl for diplaying the system data to users.
 	output = template('./template/listsystemtpl', rows = AllSystems)
@@ -155,13 +172,17 @@ def node_item(NodeName):
 @route('/Deploy/<NodeName:path>', method='GET')
 def deployOn_IP(NodeName):
 	global DeployStarted, FinishDeploying
-	if request.GET.get('save','').strip():
-		print "##############"
-		print FinishDeploying
-		print "##############"
+	# Retrive GET Var from Bottle API
+	if request.GET.get('username','').strip():
+		print "************************"
+		print "username?"
+		myusername = request.GET.get('username', '').strip()
+		print myusername
+		print "************************"
+	if request.GET.get('Deploy','').strip():
+		print "got Deploy?"
 		if FinishDeploying == 1:
 			DeployStarted = 0
-			print "Seems your playbook deployment finished"
 			# Here we could redirect to a new webpage which indicates the statistics for this deployment. 
 			return "Check your log for fail or not"
 		else:
@@ -169,7 +190,7 @@ def deployOn_IP(NodeName):
 			# a subprocess or thread will be spawned for deploying using Ansible
 			if DeployStarted == 0:
 				# Thread could only be started once. 
-				t = clientThread(1)
+				t = clientThread(NodeName)
 				t.start()
 				DeployStarted = 1
 			# Default will return this auto-refreshable webpage
@@ -178,13 +199,24 @@ def deployOn_IP(NodeName):
 	# Default all of the playbooks will be deplayed.
 	else:
 		# Here we provide the playbook list and let user for selecting.   
-		#FinishDeploying = 0
-		output = template('./template/deployment')
+		FinishDeploying = 0
+		# Here we should list all of the playbooks, render the template, and send it to the user
+		# Search all of the yml and appended them into the array. 
+		playbooks = []
+		for f in os.listdir('./playbooks'):
+			if re.search('.yml$', f):
+				playbooks += [f]
+		output = template('./template/deployment', playbooks=playbooks)
 		return output
 
 #  a client thread for changing some global status
 class clientThread(threading.Thread):
         def __init__(self, threadid):
+		self.domain_name = threadid
+		handle = capi.BootAPI()
+		# Possible Risk(if there are other ip address? or the name is not eth0, like enp0sxx?)
+		for x in handle.find_system(hostname=self.domain_name, return_list=True):
+			self.public_ip_address = x.interfaces['eth0']['ip_address']
                 threading.Thread.__init__(self)
 
         def run(self):
@@ -192,17 +224,60 @@ class clientThread(threading.Thread):
 
 	# In handle_task we will call Ansible instead of debugging 
         def handle_task(self):
+		# Run a Ansible playbook here, first runs on 10.3.3.33
+		inventory_template = jinja2.Template(inventory)
+		print self.domain_name
+		print self.public_ip_address
+		rendered_inventory = inventory_template.render({
+			'public_ip_address': self.public_ip_address, 
+			'domain_name': self.domain_name, 
+			'customer_id' : 'bobdylan', 
+			'customer_name' : 'BobDylan', 
+			'customer_email' : 'bobdylan@heavensdoor.com'
+			# and the rest of our variables
+		})
+		
+		# Create a temporary file and write the template string to it
+		hosts = NamedTemporaryFile(delete=False)
+		hosts.write(rendered_inventory)
+		hosts.close()
+		
+		# First we will test install/uninstall the ntp server on its server.
+		pb = PlayBook(
+			#playbook='./playbooks/ntp-install.yml',
+			playbook='./playbooks/ntp-remove.yml',
+			host_list=hosts.name,     # Our hosts, the rendered inventory file
+			remote_user='root',
+			callbacks=playbook_cb,
+			runner_callbacks=runner_cb,
+			stats=stats,
+			private_key_file='/root/.ssh/id_rsa'
+		)
+		results = pb.run()
+		
+		# Ensure on_stats callback is called
+		# for callback modules
+		playbook_cb.on_stats(pb.stats)
+		
+		os.remove(hosts.name)
+		print "***************************************************************"
+		print "See this means you have finished the Playbook running in Thread"
+		print "***************************************************************"
 		global FinishDeploying
-		i = 10
-                while i > 1:
-                        print "Print from thread!"
-			print i
-                        time.sleep(1)
-			i -= 1
-			if i == 2:
-				print "Changing number Now!!!"
-				FinishDeploying = 1
-				print FinishDeploying
+		FinishDeploying = 1
+
+
+		# global FinishDeploying
+		# i = 10
+                # while i > 1:
+                #         print "Print from thread!"
+		# 	print i
+                #         time.sleep(1)
+		# 	i -= 1
+		# 	if i == 2:
+		# 		print "Changing number Now!!!"
+		# 		FinishDeploying = 1
+		# 		print FinishDeploying
 
 
 # Testing  the templates
