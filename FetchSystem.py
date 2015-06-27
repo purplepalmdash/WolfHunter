@@ -1,8 +1,11 @@
 ################################################################################
-# This File is for listing all of the defined nodes, which could also viewed by
+# V1: This File is for listing all of the defined nodes, which could also viewed by
 # `cobbler list`
+# V2: I added more operations, like add a new definition of the node, and present
+# these functionalities to end-user, and designed its logic for jumping. 
+# V3: Import Ansible, to let ansible do playbook deployment on the base of the 
+# Cobbler deployed base-system.  
 ################################################################################
-
 # Use Cobbler API
 import xmlrpclib
 # Use cobbler BootAPI, Notice this method is not suggested from version 2.0
@@ -20,12 +23,20 @@ import time
 import sys
 import errno
 import threading
+# Ansible related
+from ansible.playbook import PlayBook
+from ansible.inventory import Inventory
+from ansible import callbacks
+from ansible import utils
+# Use jijia2 and templates for rendering the temp-files,tmpfiles will be used for playing playbooks. 
+import jinja2
+from tempfile import NamedTemporaryFile
+import os
 
 
 # Cobbler Server instance and token will be used during the lifetime of this file
 CobblerServer = xmlrpclib.Server("http://127.0.0.1/cobbler_api")
 token = CobblerServer.login("cobbler", "engine")
-#handle = capi.BootAPI()
 
 # Global variable for indicating a playbook is deployed or not
 global FinishDeploying
@@ -143,8 +154,11 @@ def node_item(NodeName):
 # Pages for serving a single node
 @route('/Deploy/<NodeName:path>', method='GET')
 def deployOn_IP(NodeName):
-	global DeployStarted
+	global DeployStarted, FinishDeploying
 	if request.GET.get('save','').strip():
+		print "##############"
+		print FinishDeploying
+		print "##############"
 		if FinishDeploying == 1:
 			DeployStarted = 0
 			print "Seems your playbook deployment finished"
@@ -153,15 +167,13 @@ def deployOn_IP(NodeName):
 		else:
 			# Here the Ansible module will be called, and hint user that we are deploying, wait for succeed or fail. 
 			# a subprocess or thread will be spawned for deploying using Ansible
-			print "under deployment, please wait!"
 			if DeployStarted == 0:
+				# Thread could only be started once. 
 				t = clientThread(1)
 				t.start()
 				DeployStarted = 1
+			# Default will return this auto-refreshable webpage
 			output = template('./template/underdeployment')
-			# Before teturn output, create a thread for Ansible's deployment
-			# t = clientThread(1)
-			# t.start()
 			return output
 	# Default all of the playbooks will be deplayed.
 	else:
@@ -178,10 +190,19 @@ class clientThread(threading.Thread):
         def run(self):
                 self.handle_task()
 
+	# In handle_task we will call Ansible instead of debugging 
         def handle_task(self):
-                while True:
+		global FinishDeploying
+		i = 10
+                while i > 1:
                         print "Print from thread!"
+			print i
                         time.sleep(1)
+			i -= 1
+			if i == 2:
+				print "Changing number Now!!!"
+				FinishDeploying = 1
+				print FinishDeploying
 
 
 # Testing  the templates
