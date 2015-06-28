@@ -102,7 +102,7 @@ def new_system():
 		Added_IpAddress = request.GET.get('IpAddress','').strip()
 		Added_Gateway = request.GET.get('Gateway','').strip()
 		Added_Hostname = request.GET.get('Hostname','').strip()
-		Added_Profile = request.GET.get('Profile','').strip()
+		Added_Profile = request.GET.get('ProfileList','').strip()
 		Added_DnsName = request.GET.get('DnsName','').strip()
 		# Really insert into the cobbler backend
 		#insert_system_to_cobbler(Added_NodeName, Added_MacAddress, Added_IpAddress, Added_Gateway, Added_Hostname, Added_Profile, Added_DnsName)
@@ -118,7 +118,27 @@ def new_system():
 		redirect('/Node/'+Added_NodeName)
 	else:
 		# The Profiles should be retrived from the Cobbler System, and use template for rendering it.
-		output = template('./template/newsystemtpl')
+		# Retrieve the profile list(distro list)
+		handle = capi.BootAPI()
+		# distros holds all of the distros which could be fetched via `cobbler profile list`
+		distros = []
+		namelist = []
+		maclist = []
+		iplist = []
+		for x in handle.distros():
+			distros += [x.name]
+		for i in CobblerServer.get_systems():
+			#namelist += [i['name']]
+			namelist += [i['name']]
+			#print i['name']
+			maclist += [i['interfaces']['eth0']['mac_address']]
+			#print i['interfaces']['eth0']['mac_address']
+			iplist += [i['interfaces']['eth0']['ip_address']]
+			#print i['interfaces']['eth0']['ip_address']
+		# Check the name/ip_address exists or not in this page, using javascript?
+		for i in namelist:
+			print i
+		output = template('./template/newsystemtpl', distros=distros, namelist=namelist, maclist=maclist, iplist=iplist)
 		return output
 
 # Function for wrapping the Cobbler's API for inserting the definition into the Cobber System.
@@ -144,7 +164,6 @@ def node_item(NodeName):
 	for x in handle.find_system(hostname=NodeName, return_list=True):
 		NodeIP = x.interfaces['eth0']['ip_address']
 	# 1.2 Just use ssh to detect whether remote machine is ready for be fucked or not. 
-	print NodeIP
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	try:
 		# 1.2.1 you are trying and hoping you will OK
@@ -173,14 +192,9 @@ def node_item(NodeName):
 def deployOn_IP(NodeName):
 	global DeployStarted, FinishDeploying
 	# Retrive GET Var from Bottle API
-	if request.GET.get('username','').strip():
-		print "************************"
-		print "username?"
-		myusername = request.GET.get('username', '').strip()
-		print myusername
-		print "************************"
+	if request.GET.get('playbook','').strip():
+		playbook = request.GET.get('playbook', '').strip()
 	if request.GET.get('Deploy','').strip():
-		print "got Deploy?"
 		if FinishDeploying == 1:
 			DeployStarted = 0
 			# Here we could redirect to a new webpage which indicates the statistics for this deployment. 
@@ -190,9 +204,11 @@ def deployOn_IP(NodeName):
 			# a subprocess or thread will be spawned for deploying using Ansible
 			if DeployStarted == 0:
 				# Thread could only be started once. 
-				t = clientThread(NodeName)
-				t.start()
-				DeployStarted = 1
+				if request.GET.get('playbook', '').strip():
+					playbook = request.GET.get('playbook', '').strip()
+					t = clientThread(NodeName, playbook)
+					t.start()
+					DeployStarted = 1
 			# Default will return this auto-refreshable webpage
 			output = template('./template/underdeployment')
 			return output
@@ -211,8 +227,9 @@ def deployOn_IP(NodeName):
 
 #  a client thread for changing some global status
 class clientThread(threading.Thread):
-        def __init__(self, threadid):
-		self.domain_name = threadid
+        def __init__(self, NodeName, playbook):
+		self.domain_name = NodeName
+		self.playbook = playbook
 		handle = capi.BootAPI()
 		# Possible Risk(if there are other ip address? or the name is not eth0, like enp0sxx?)
 		for x in handle.find_system(hostname=self.domain_name, return_list=True):
@@ -245,7 +262,7 @@ class clientThread(threading.Thread):
 		# First we will test install/uninstall the ntp server on its server.
 		pb = PlayBook(
 			#playbook='./playbooks/ntp-install.yml',
-			playbook='./playbooks/ntp-remove.yml',
+			playbook='./playbooks/'+self.playbook, 
 			host_list=hosts.name,     # Our hosts, the rendered inventory file
 			remote_user='root',
 			callbacks=playbook_cb,

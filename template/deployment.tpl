@@ -10,11 +10,8 @@
 %#  <body onload="JavaScript:timedRefresh(5000);"> 
 <p>Select following playbook for deployment</p>
 <form actions="/deployment" method="GET">
-* CloudStack<br>
-* NTP<br>
-Username: <input name="username" type="text" /><br>
 %for playbook in playbooks:
-<input type="checkbox" name="playbook1" value="playbook1">{{playbook}}<br>
+<input type="radio" name="playbook" value={{playbook}}>{{playbook}}<br>
 %end
 <input type="submit" name="Deploy" value="Deploy">
 </form>

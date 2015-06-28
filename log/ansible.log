@@ -117,3 +117,154 @@ It is sometimes useful to re-run the command using -vvvv, which prints SSH debug
 2015-06-28 03:44:18,727 p=21107 u=root |  PLAY [all] ******************************************************************** 
 2015-06-28 03:44:18,728 p=21107 u=root |  TASK: [remove ntp] ************************************************************ 
 2015-06-28 03:44:20,632 p=21107 u=root |  ok: [10.3.3.33]
+2015-06-28 05:18:51,278 p=17334 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:18:51,278 p=17334 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 05:18:53,232 p=17334 u=root |  ok: [10.3.3.33]
+2015-06-28 05:22:24,529 p=17334 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:22:24,530 p=17334 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 05:22:26,429 p=17334 u=root |  ok: [10.3.3.33]
+2015-06-28 05:33:08,638 p=26253 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:33:08,639 p=26253 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 05:33:10,559 p=26253 u=root |  ok: [10.3.3.33]
+2015-06-28 05:34:15,182 p=26253 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:34:15,182 p=26253 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 05:34:18,568 p=26253 u=root |  failed: [10.3.3.33] => {"failed": true}
+2015-06-28 05:34:18,568 p=26253 u=root |  msg: Could not fetch updated apt files
+2015-06-28 05:34:18,569 p=26253 u=root |  FATAL: all hosts have already failed -- aborting
+2015-06-28 05:34:49,710 p=26253 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:34:49,710 p=26253 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 05:34:49,717 p=26253 u=root |  FATAL: no hosts matched or all hosts have already failed -- aborting
+
+2015-06-28 05:36:12,709 p=26253 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:36:12,709 p=26253 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 05:36:12,716 p=26253 u=root |  FATAL: no hosts matched or all hosts have already failed -- aborting
+
+2015-06-28 05:40:04,386 p=26253 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:40:04,386 p=26253 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 05:40:04,394 p=26253 u=root |  FATAL: no hosts matched or all hosts have already failed -- aborting
+
+2015-06-28 05:40:40,434 p=31520 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:40:40,434 p=31520 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 05:40:52,042 p=31520 u=root |  changed: [10.3.3.33]
+2015-06-28 05:40:52,043 p=31520 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 05:40:52,395 p=31520 u=root |  ok: [10.3.3.33]
+2015-06-28 05:40:52,396 p=31520 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-28 05:40:52,648 p=31520 u=root |  ok: [10.3.3.33]
+2015-06-28 05:41:13,242 p=31520 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:41:13,243 p=31520 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 05:41:18,755 p=31520 u=root |  changed: [10.3.3.33]
+2015-06-28 05:41:53,525 p=31520 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:41:53,526 p=31520 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 05:41:54,344 p=31520 u=root |  ok: [10.3.3.33]
+2015-06-28 05:42:08,089 p=31520 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:42:08,090 p=31520 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 05:42:16,531 p=31520 u=root |  changed: [10.3.3.33]
+2015-06-28 05:42:16,531 p=31520 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 05:42:16,866 p=31520 u=root |  ok: [10.3.3.33]
+2015-06-28 05:42:16,867 p=31520 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-28 05:42:17,151 p=31520 u=root |  ok: [10.3.3.33]
+2015-06-28 05:42:42,588 p=31520 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:42:42,589 p=31520 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 05:42:47,878 p=31520 u=root |  changed: [10.3.3.33]
+2015-06-28 05:43:00,049 p=31520 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 05:43:00,049 p=31520 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 05:43:00,881 p=31520 u=root |  ok: [10.3.3.33]
+2015-06-28 06:26:25,839 paramiko.transport starting thread (client mode): 0x33183d0L
+2015-06-28 06:26:25,961 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 06:26:25,962 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 06:26:25,962 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 06:26:25,962 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 06:26:26,027 paramiko.transport Switch to new keys ...
+2015-06-28 06:26:26,041 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 06:26:26,045 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 06:26:26,065 paramiko.transport userauth is OK
+2015-06-28 06:26:26,079 paramiko.transport Authentication (publickey) successful!
+2015-06-28 06:26:26,180 paramiko.transport EOF in transport thread
+2015-06-28 06:26:47,544 paramiko.transport starting thread (client mode): 0x33183d0L
+2015-06-28 06:26:47,553 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 06:26:47,555 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 06:26:47,555 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 06:26:47,555 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 06:26:47,626 paramiko.transport Switch to new keys ...
+2015-06-28 06:26:47,644 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 06:26:47,645 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 06:26:47,664 paramiko.transport userauth is OK
+2015-06-28 06:26:47,680 paramiko.transport Authentication (publickey) successful!
+2015-06-28 06:26:47,780 paramiko.transport EOF in transport thread
+2015-06-28 06:28:37,481 paramiko.transport starting thread (client mode): 0x36f2210L
+2015-06-28 06:28:37,490 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 06:28:37,491 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 06:28:37,491 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 06:28:37,491 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 06:28:37,563 paramiko.transport Switch to new keys ...
+2015-06-28 06:28:37,582 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 06:28:37,583 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 06:28:37,602 paramiko.transport userauth is OK
+2015-06-28 06:28:37,615 paramiko.transport Authentication (publickey) successful!
+2015-06-28 06:28:37,715 paramiko.transport EOF in transport thread
+2015-06-28 06:29:11,672 paramiko.transport starting thread (client mode): 0x3b1b210L
+2015-06-28 06:29:11,687 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 06:29:11,689 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 06:29:11,689 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 06:29:11,690 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 06:29:11,769 paramiko.transport Switch to new keys ...
+2015-06-28 06:29:11,773 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 06:29:11,774 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 06:29:11,808 paramiko.transport userauth is OK
+2015-06-28 06:29:11,820 paramiko.transport Authentication (publickey) successful!
+2015-06-28 06:29:11,921 paramiko.transport EOF in transport thread
+2015-06-28 06:31:21,271 paramiko.transport starting thread (client mode): 0x1f9b210L
+2015-06-28 06:31:21,287 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 06:31:21,288 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 06:31:21,288 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 06:31:21,288 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 06:31:21,375 paramiko.transport Switch to new keys ...
+2015-06-28 06:31:21,377 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 06:31:21,379 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 06:31:21,412 paramiko.transport userauth is OK
+2015-06-28 06:31:21,426 paramiko.transport Authentication (publickey) successful!
+2015-06-28 06:31:21,527 paramiko.transport EOF in transport thread
+2015-06-28 06:34:14,444 paramiko.transport starting thread (client mode): 0x3c151d0L
+2015-06-28 06:34:14,457 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 06:34:14,460 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 06:34:14,460 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 06:34:14,460 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 06:34:14,539 paramiko.transport Switch to new keys ...
+2015-06-28 06:34:14,544 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 06:34:14,546 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 06:34:14,578 paramiko.transport userauth is OK
+2015-06-28 06:34:14,599 paramiko.transport Authentication (publickey) successful!
+2015-06-28 06:34:14,700 paramiko.transport EOF in transport thread
+2015-06-28 08:47:40,547 paramiko.transport starting thread (client mode): 0x1e3a210L
+2015-06-28 08:47:40,556 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 08:47:40,557 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 08:47:40,557 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 08:47:40,557 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 08:47:40,631 paramiko.transport Switch to new keys ...
+2015-06-28 08:47:40,647 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 08:47:40,649 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 08:47:40,668 paramiko.transport userauth is OK
+2015-06-28 08:47:40,680 paramiko.transport Authentication (publickey) successful!
+2015-06-28 08:47:40,780 paramiko.transport EOF in transport thread
+2015-06-28 08:47:47,154 paramiko.transport starting thread (client mode): 0x1f0d590L
+2015-06-28 08:47:47,167 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 08:47:47,168 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 08:47:47,169 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 08:47:47,169 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 08:47:47,245 paramiko.transport Switch to new keys ...
+2015-06-28 08:47:47,254 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 08:47:47,255 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 08:47:47,284 paramiko.transport userauth is OK
+2015-06-28 08:47:47,293 paramiko.transport Authentication (publickey) successful!
+2015-06-28 08:47:47,394 paramiko.transport EOF in transport thread
+2015-06-28 08:48:18,968 paramiko.transport starting thread (client mode): 0x1f0db10L
+2015-06-28 08:48:18,973 paramiko.transport Connected (version 2.0, client OpenSSH_5.9p1)
+2015-06-28 08:48:18,979 paramiko.transport kex algos:['ecdh-sha2-nistp256', 'ecdh-sha2-nistp384', 'ecdh-sha2-nistp521', 'diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss', 'ecdsa-sha2-nistp256'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-256-96', 'hmac-sha2-512', 'hmac-sha2-512-96', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 08:48:18,979 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 08:48:18,979 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 08:48:19,050 paramiko.transport Switch to new keys ...
+2015-06-28 08:48:19,069 paramiko.transport Adding ssh-rsa host key for 10.3.3.33: b2b22428034993af5624fe8bfd40d745
+2015-06-28 08:48:19,070 paramiko.transport Trying discovered key 0a03f250dba863d8a2607fc040ead36c in /root/.ssh/id_rsa
+2015-06-28 08:48:19,089 paramiko.transport userauth is OK
+2015-06-28 08:48:19,101 paramiko.transport Authentication (publickey) successful!
+2015-06-28 08:48:19,202 paramiko.transport EOF in transport thread
