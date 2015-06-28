@@ -11,7 +11,7 @@ import xmlrpclib
 # Use cobbler BootAPI, Notice this method is not suggested from version 2.0
 import cobbler.api as capi
 # Use bottle, for rendering HTML
-from bottle import route, run, debug, template, view, request, redirect
+from bottle import route, run, debug, template, view, request, redirect, static_file
 # Beautify json output
 import json
 # Use socket for detect the remote machine status(ssh port 22)
@@ -68,6 +68,11 @@ customer_email={{ customer_email }}
 """
 
 ### Actual codes goes from here
+# Well, you want to use customized css or js here
+@route('/static/:path#.+#', name='static')
+def static(path):
+	return static_file(path, root='static')
+
 # By visit http://Your_URL/system will get all of the installed system node name
 @route('/listsystem')
 def list_system():
@@ -97,13 +102,21 @@ def new_system():
 	if request.GET.get('save','').strip():
 		# Get the Form Elements from the GET Method.
 		# Idealy in the html we should use JavaScript for matching the conditions. 
+		print "Yes, we received the POST form!"
 		Added_NodeName = request.GET.get('NodeName','').strip()
+		print Added_NodeName
 		Added_MacAddress = request.GET.get('MacAddress','').strip()
+		print Added_MacAddress
 		Added_IpAddress = request.GET.get('IpAddress','').strip()
+		print Added_IpAddress
 		Added_Gateway = request.GET.get('Gateway','').strip()
+		print Added_Gateway
 		Added_Hostname = request.GET.get('Hostname','').strip()
+		print Added_Hostname
 		Added_Profile = request.GET.get('ProfileList','').strip()
+		print Added_Profile
 		Added_DnsName = request.GET.get('DnsName','').strip()
+		print Added_DnsName
 		# Really insert into the cobbler backend
 		#insert_system_to_cobbler(Added_NodeName, Added_MacAddress, Added_IpAddress, Added_Gateway, Added_Hostname, Added_Profile, Added_DnsName)
 
