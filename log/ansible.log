@@ -483,3 +483,117 @@ It is sometimes useful to re-run the command using -vvvv, which prints SSH debug
 2015-06-28 23:22:37,172 p=576 u=root |  skipping: [10.47.58.150]
 2015-06-28 23:22:37,173 p=576 u=root |  TASK: [start ntp] ************************************************************* 
 2015-06-28 23:22:37,562 p=576 u=root |  changed: [10.47.58.150]
+2015-06-28 23:53:08,338 paramiko.transport starting thread (client mode): 0x3047e10L
+2015-06-28 23:53:08,345 paramiko.transport Connected (version 2.0, client OpenSSH_5.3)
+2015-06-28 23:53:08,347 paramiko.transport kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 23:53:08,347 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 23:53:08,347 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 23:53:08,389 paramiko.transport Switch to new keys ...
+2015-06-28 23:53:08,421 paramiko.transport Adding ssh-rsa host key for 10.47.58.150: 5778062469ce979e25d6fc265afe1c2b
+2015-06-28 23:53:08,424 paramiko.transport Trying discovered key bde9e9313f0489647eff4aff91063011 in /root/.ssh/id_rsa
+2015-06-28 23:53:08,430 paramiko.transport userauth is OK
+2015-06-28 23:53:08,480 paramiko.transport Authentication (publickey) successful!
+2015-06-28 23:53:08,580 paramiko.transport EOF in transport thread
+2015-06-28 23:57:44,110 paramiko.transport starting thread (client mode): 0x1f36050L
+2015-06-28 23:57:44,113 paramiko.transport Connected (version 2.0, client OpenSSH_5.3)
+2015-06-28 23:57:44,114 paramiko.transport kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 23:57:44,114 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 23:57:44,114 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 23:57:44,161 paramiko.transport Switch to new keys ...
+2015-06-28 23:57:44,177 paramiko.transport Adding ssh-rsa host key for 10.47.58.150: 5778062469ce979e25d6fc265afe1c2b
+2015-06-28 23:57:44,179 paramiko.transport Trying discovered key bde9e9313f0489647eff4aff91063011 in /root/.ssh/id_rsa
+2015-06-28 23:57:44,201 paramiko.transport userauth is OK
+2015-06-28 23:57:44,247 paramiko.transport Authentication (publickey) successful!
+2015-06-28 23:57:44,348 paramiko.transport EOF in transport thread
+2015-06-29 00:12:43,293 p=8661 u=root |  PLAY [all] ******************************************************************** 
+2015-06-29 00:12:43,294 p=8661 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-29 00:12:45,133 p=8661 u=root |  ok: [10.47.58.150]
+2015-06-29 00:12:45,135 p=8661 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-29 00:12:45,144 p=8661 u=root |  skipping: [10.47.58.150]
+2015-06-29 00:12:45,144 p=8661 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-29 00:12:47,601 p=8661 u=root |  changed: [10.47.58.150]
+2015-06-29 00:12:59,666 p=8661 u=root |  PLAY [all] ******************************************************************** 
+2015-06-29 00:12:59,666 p=8661 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-29 00:13:00,036 p=8661 u=root |  ok: [10.47.58.150]
+2015-06-29 00:13:00,036 p=8661 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-29 00:13:00,050 p=8661 u=root |  skipping: [10.47.58.150]
+2015-06-29 00:13:00,050 p=8661 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-29 00:13:03,196 p=8661 u=root |  changed: [10.47.58.150]
+2015-06-29 00:13:03,197 p=8661 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-29 00:13:03,621 p=8661 u=root |  changed: [10.47.58.150]
+2015-06-29 00:13:03,621 p=8661 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-29 00:13:03,628 p=8661 u=root |  skipping: [10.47.58.150]
+2015-06-29 00:13:03,628 p=8661 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-29 00:13:04,011 p=8661 u=root |  changed: [10.47.58.150]
+2015-06-29 00:13:04,011 p=8661 u=root |  NOTIFIED: [restart ntp] ******************************************************* 
+2015-06-29 00:13:04,020 p=8661 u=root |  skipping: [10.47.58.150]
+2015-06-29 00:14:59,502 paramiko.transport starting thread (client mode): 0xc8032d90L
+2015-06-29 00:14:59,511 paramiko.transport Connected (version 2.0, client OpenSSH_5.3)
+2015-06-29 00:14:59,513 paramiko.transport kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-29 00:14:59,513 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-29 00:14:59,513 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-29 00:14:59,560 paramiko.transport Switch to new keys ...
+2015-06-29 00:14:59,592 paramiko.transport Adding ssh-rsa host key for 10.47.58.150: 5778062469ce979e25d6fc265afe1c2b
+2015-06-29 00:14:59,594 paramiko.transport Trying discovered key bde9e9313f0489647eff4aff91063011 in /root/.ssh/id_rsa
+2015-06-29 00:14:59,600 paramiko.transport userauth is OK
+2015-06-29 00:14:59,654 paramiko.transport Authentication (publickey) successful!
+2015-06-29 00:14:59,755 paramiko.transport EOF in transport thread
+2015-06-29 00:31:19,793 paramiko.transport starting thread (client mode): 0x21daf10L
+2015-06-29 00:31:19,801 paramiko.transport Connected (version 2.0, client OpenSSH_5.3)
+2015-06-29 00:31:19,806 paramiko.transport kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-29 00:31:19,806 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-29 00:31:19,806 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-29 00:31:19,861 paramiko.transport Switch to new keys ...
+2015-06-29 00:31:19,893 paramiko.transport Adding ssh-rsa host key for 10.47.58.150: 5778062469ce979e25d6fc265afe1c2b
+2015-06-29 00:31:19,895 paramiko.transport Trying discovered key bde9e9313f0489647eff4aff91063011 in /root/.ssh/id_rsa
+2015-06-29 00:31:19,901 paramiko.transport userauth is OK
+2015-06-29 00:31:19,952 paramiko.transport Authentication (publickey) successful!
+2015-06-29 00:31:20,052 paramiko.transport EOF in transport thread
+2015-06-29 00:31:39,509 p=15606 u=root |  PLAY [all] ******************************************************************** 
+2015-06-29 00:31:39,510 p=15606 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-29 00:31:41,373 p=15606 u=root |  ok: [10.47.58.150]
+2015-06-29 00:31:41,374 p=15606 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-29 00:31:41,383 p=15606 u=root |  skipping: [10.47.58.150]
+2015-06-29 00:31:41,384 p=15606 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-29 00:31:43,649 p=15606 u=root |  changed: [10.47.58.150]
+2015-06-29 00:31:56,931 p=15606 u=root |  PLAY [all] ******************************************************************** 
+2015-06-29 00:31:56,931 p=15606 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-29 00:31:57,379 p=15606 u=root |  ok: [10.47.58.150]
+2015-06-29 00:31:57,379 p=15606 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-29 00:31:57,388 p=15606 u=root |  skipping: [10.47.58.150]
+2015-06-29 00:31:57,389 p=15606 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-29 00:32:00,463 p=15606 u=root |  changed: [10.47.58.150]
+2015-06-29 00:32:00,464 p=15606 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-29 00:32:00,907 p=15606 u=root |  changed: [10.47.58.150]
+2015-06-29 00:32:00,907 p=15606 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-29 00:32:00,915 p=15606 u=root |  skipping: [10.47.58.150]
+2015-06-29 00:32:00,916 p=15606 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-29 00:32:01,294 p=15606 u=root |  changed: [10.47.58.150]
+2015-06-29 00:32:01,295 p=15606 u=root |  NOTIFIED: [restart ntp] ******************************************************* 
+2015-06-29 00:32:01,308 p=15606 u=root |  skipping: [10.47.58.150]
+2015-06-29 03:14:30,623 paramiko.transport starting thread (client mode): 0x26ae310L
+2015-06-29 03:14:30,646 paramiko.transport Connected (version 2.0, client OpenSSH_5.3)
+2015-06-29 03:14:30,647 paramiko.transport kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-29 03:14:30,647 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-29 03:14:30,647 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-29 03:14:30,729 paramiko.transport Switch to new keys ...
+2015-06-29 03:14:30,730 paramiko.transport Adding ssh-rsa host key for 10.47.58.151: ce94b5f4c1f9d98aa312ef1c5e804024
+2015-06-29 03:14:30,755 paramiko.transport Trying discovered key bde9e9313f0489647eff4aff91063011 in /root/.ssh/id_rsa
+2015-06-29 03:14:30,769 paramiko.transport userauth is OK
+2015-06-29 03:14:30,950 paramiko.transport Authentication (publickey) successful!
+2015-06-29 03:14:31,050 paramiko.transport EOF in transport thread
+2015-06-29 03:16:07,283 p=3683 u=root |  PLAY [all] ******************************************************************** 
+2015-06-29 03:16:07,283 p=3683 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-29 03:16:10,307 p=3683 u=root |  ok: [10.47.58.151]
+2015-06-29 03:16:10,308 p=3683 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-29 03:16:10,315 p=3683 u=root |  skipping: [10.47.58.151]
+2015-06-29 03:16:10,316 p=3683 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-29 03:17:34,791 p=3683 u=root |  ok: [10.47.58.151]
+2015-06-29 03:17:34,791 p=3683 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-29 03:17:35,189 p=3683 u=root |  changed: [10.47.58.151]
+2015-06-29 03:17:35,189 p=3683 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-29 03:17:35,195 p=3683 u=root |  skipping: [10.47.58.151]
+2015-06-29 03:17:35,196 p=3683 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-29 03:17:35,826 p=3683 u=root |  changed: [10.47.58.151]
+2015-06-29 03:17:35,827 p=3683 u=root |  NOTIFIED: [restart ntp] ******************************************************* 
+2015-06-29 03:17:35,835 p=3683 u=root |  skipping: [10.47.58.151]

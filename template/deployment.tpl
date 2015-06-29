@@ -15,7 +15,7 @@ Node Info
 </h1>
 <p>Select following playbook for deployment</p>
 <form class="pure-form pure-form-aligned" actions="/deployment" method="GET">
-%for playbook in playbooks:
+%for playbook in playbookfullname:
 <input type="radio" name="playbook" value={{playbook}}>{{playbook}}<br>
 %end
 <input type="submit" name="Deploy" value="Deploy">

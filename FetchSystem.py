@@ -5,7 +5,19 @@
 # these functionalities to end-user, and designed its logic for jumping. 
 # V3: Import Ansible, to let ansible do playbook deployment on the base of the 
 # Cobbler deployed base-system.  
+# V4: Integration with Ansible Playbooks, but the playbooks needs to be customizated. 
 ################################################################################
+
+################################################################################
+# Todo:
+# 1. Username/Password.
+# 2. Playbook Customization.  https://github.com/edx/configuration/wiki/Ansible-variable-conventions-and-overriding-defaults, 
+# ansible-playbook ... -e "test_var=foo", but for python wrapped, how to ? 
+# 3. Remove the added Nodes. 
+# 4. Edit the added Nodes. 
+# 5. Insert id_rsa.pub into the system. 
+################################################################################
+
 # Use Cobbler API
 import xmlrpclib
 # Use cobbler BootAPI, Notice this method is not suggested from version 2.0
@@ -76,7 +88,6 @@ def static(path):
 # By visit http://Your_URL/system will get all of the installed system node name
 @route('/listsystem')
 def list_system():
-	print "#################Your visited listsystem############"
 	# Use an list for recording all of the single_record(which is a tuple)
 	SystemTableName = ('Node Name', 'MAC Address', 'IP Address', 'Gateway', 'Hostname', 'Profile', 'DNS Name', 'Created Time', 'Modified Time')
 	AllSystems = []
@@ -105,23 +116,16 @@ def new_system():
 	if request.GET.get('save','').strip():
 		# Get the Form Elements from the GET Method.
 		# Idealy in the html we should use JavaScript for matching the conditions. 
-		print "Yes, we received the POST form!"
 		Added_NodeName = request.GET.get('NodeName','').strip()
-		print Added_NodeName
 		Added_MacAddress = request.GET.get('MacAddress','').strip()
-		print Added_MacAddress
 		Added_IpAddress = request.GET.get('IpAddress','').strip()
-		print Added_IpAddress
 		Added_Gateway = request.GET.get('Gateway','').strip()
-		print Added_Gateway
 		Added_Hostname = request.GET.get('Hostname','').strip()
-		print Added_Hostname
 		Added_Profile = request.GET.get('ProfileList','').strip()
-		print Added_Profile
 		Added_DnsName = request.GET.get('DnsName','').strip()
-		print Added_DnsName
 		# Really insert into the cobbler backend
-		#insert_system_to_cobbler(Added_NodeName, Added_MacAddress, Added_IpAddress, Added_Gateway, Added_Hostname, Added_Profile, Added_DnsName)
+		insert_system_to_cobbler(Added_NodeName, Added_MacAddress, Added_IpAddress, Added_Gateway, Added_Hostname, Added_Profile, Added_DnsName)
+		# Sync for updating.
 
 		# Call Wrapped Cobbler function for really add the system into the Cobbler System.
 		# TODO: We may encouter the node has been defined in the system, thus we have to hint for modifying or cancel.
@@ -171,8 +175,17 @@ def node_item(NodeName):
 	# use a handle for get the ip address of the specified NodeName
 	handle = capi.BootAPI()
 	# Possible Risk(if there are other ip address? or the name is not eth0, like enp0sxx?)
-	for x in handle.find_system(hostname=NodeName, return_list=True):
-		NodeIP = x.interfaces['eth0']['ip_address']
+	# Only we got the available IP Address then we can continue to deploy.
+	while True:
+		# Find out the ip address corresponding to the NodeName.
+		for x in handle.find_system(hostname=NodeName, return_list=True):
+			NodeIP = x.interfaces['eth0']['ip_address']
+			#print NodeIP
+		# none-empty string will breakout.
+		if NodeIP:
+			print "Yes there are something, so quit!!!"
+			break
+	print NodeIP
 	# 1.2 Just use ssh to detect whether remote machine is ready for be fucked or not. 
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	try:
@@ -188,11 +201,15 @@ def node_item(NodeName):
 		except Exception, e:
 			# 2.2 flirting failed, check your own reason. 
 			print e
-			return "<p>Your 22 Port is OK, but there may be something you have to set with ssh"+ "<br>Reason:<br>"+ str(e)
+			output = template('./template/checksshservicealive')
+			return output
 	except socket.error as e:
 		# 1.2.2 you could reach the 22 port, go back and checking.
 		print "No, the port is unreachable, keep calm and checking connections"
-		return "<p>Your 22 Port seems down, check it!"+ "<br>Reason:<br>"+ str(e)
+		# These maybe the deployment is going, so refresh it using javascript.
+		output = template('./template/checksshportalive')
+		return output
+		#return "<p>Your 22 Port seems down, check it!"+ "<br>Reason:<br>"+ str(e)
 	s.close()
 	# 3. Now you can really go to the Deployment webpage and fucking now!
 	redirect('/Deploy/'+ NodeName)
@@ -228,11 +245,19 @@ def deployOn_IP(NodeName):
 		FinishDeploying = 0
 		# Here we should list all of the playbooks, render the template, and send it to the user
 		# Search all of the yml and appended them into the array. 
-		playbooks = []
-		for f in os.listdir('./playbooks'):
-			if re.search('.yml$', f):
-				playbooks += [f]
-		output = template('./template/deployment', playbooks=playbooks)
+		playbookname = []
+		playbookfullname = []
+		for path, subdirs, files in os.walk('./playbooks'):
+			for filename in files:
+				f = os.path.join(path, filename)
+				#  # Get the short name for displaying
+				#  if re.search('.yml$', filename):
+				#  	playbookname += [filename]
+				# Full name including directory structure will also be filled
+				if re.search('.yml$', f):
+					playbookfullname += [f]
+
+		output = template('./template/deployment', playbookfullname = playbookfullname)
 		return output
 
 #  a client thread for changing some global status
@@ -271,14 +296,13 @@ class clientThread(threading.Thread):
 		
 		# First we will test install/uninstall the ntp server on its server.
 		pb = PlayBook(
-			#playbook='./playbooks/ntp-install.yml',
-			playbook='./playbooks/'+self.playbook, 
-			host_list=hosts.name,     # Our hosts, the rendered inventory file
-			remote_user='root',
-			callbacks=playbook_cb,
-			runner_callbacks=runner_cb,
+			playbook = self.playbook, 
+			host_list = hosts.name,     # Our hosts, the rendered inventory file
+			remote_user = 'root',
+			callbacks = playbook_cb,
+			runner_callbacks = runner_cb,
 			stats=stats,
-			private_key_file='/root/.ssh/id_rsa'
+			private_key_file = '/root/.ssh/id_rsa'
 		)
 		results = pb.run()
 		
@@ -292,27 +316,6 @@ class clientThread(threading.Thread):
 		print "***************************************************************"
 		global FinishDeploying
 		FinishDeploying = 1
-
-
-		# global FinishDeploying
-		# i = 10
-                # while i > 1:
-                #         print "Print from thread!"
-		# 	print i
-                #         time.sleep(1)
-		# 	i -= 1
-		# 	if i == 2:
-		# 		print "Changing number Now!!!"
-		# 		FinishDeploying = 1
-		# 		print FinishDeploying
-
-
-# Testing  the templates
-@route('/hello')
-@route('/hello/<name>')
-@view('hello_template')
-def hello(name='World'):
-	return dict(name=name)
 
 # Enable Debug
 debug(True)
