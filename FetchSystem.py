@@ -10,12 +10,13 @@
 
 ################################################################################
 # Todo:
-# 1. Username/Password.
+# 1. Username/Password. Not everyone are allowed to using this service.
 # 2. Playbook Customization.  https://github.com/edx/configuration/wiki/Ansible-variable-conventions-and-overriding-defaults, 
 # ansible-playbook ... -e "test_var=foo", but for python wrapped, how to ? 
 # 3. Remove the added Nodes. 
 # 4. Edit the added Nodes. 
-# 5. Insert id_rsa.pub into the system. 
+# 5. Insert id_rsa.pub into the system. (Done in Cobbler)
+# 6. Modify the Cloudstack playbook, for customize the database password. 
 ################################################################################
 
 # Use Cobbler API
@@ -58,9 +59,13 @@ FinishDeploying=0
 global DeployStarted
 DeployStarted=0
 
+# extra vars
+extra_vars = {'CSManagement.ManagementIP': "10.47.58.153"}
+
 ###  Definitions for Ansible
 # Boilerplace callbacks for stdout/stderr and log output
-utils.VERBOSITY = 0
+#utils.VERBOSITY = 0
+utils.VERBOSITY = 3
 playbook_cb = callbacks.PlaybookCallbacks(verbose=utils.VERBOSITY)
 stats = callbacks.AggregateStats()
 runner_cb = callbacks.PlaybookRunnerCallbacks(stats, verbose=utils.VERBOSITY)
@@ -68,6 +73,7 @@ runner_cb = callbacks.PlaybookRunnerCallbacks(stats, verbose=utils.VERBOSITY)
 # Dynamic Inventory
 # We fake a inventory file and let Ansible load if it's a real file.
 # Just don't tell Ansible that, so we don't hurt its feelings.
+# Added CSManagement.ManagementIP for overriding the configuration which available in playbook definition. 
 inventory = """
 [customer]
 {{ public_ip_address }}
@@ -77,6 +83,7 @@ domain={{ domain_name }}
 customer_id={{ customer_id }}
 customer_name={{ customer_name }}
 customer_email={{ customer_email }}
+CSManagement.ManagementIP={{ customer_CSMangementIP }}
 """
 
 ### Actual codes goes from here
@@ -176,6 +183,7 @@ def node_item(NodeName):
 	handle = capi.BootAPI()
 	# Possible Risk(if there are other ip address? or the name is not eth0, like enp0sxx?)
 	# Only we got the available IP Address then we can continue to deploy.
+	NodeIP = ""
 	while True:
 		# Find out the ip address corresponding to the NodeName.
 		for x in handle.find_system(hostname=NodeName, return_list=True):
@@ -276,7 +284,7 @@ class clientThread(threading.Thread):
 
 	# In handle_task we will call Ansible instead of debugging 
         def handle_task(self):
-		# Run a Ansible playbook here, first runs on 10.3.3.33
+		# Run a Ansible playbook here.
 		inventory_template = jinja2.Template(inventory)
 		print self.domain_name
 		print self.public_ip_address
@@ -285,7 +293,8 @@ class clientThread(threading.Thread):
 			'domain_name': self.domain_name, 
 			'customer_id' : 'bobdylan', 
 			'customer_name' : 'BobDylan', 
-			'customer_email' : 'bobdylan@heavensdoor.com'
+			'customer_email' : 'bobdylan@heavensdoor.com',
+			'customer_CSMangementIP': self.public_ip_address
 			# and the rest of our variables
 		})
 		
@@ -302,6 +311,7 @@ class clientThread(threading.Thread):
 			callbacks = playbook_cb,
 			runner_callbacks = runner_cb,
 			stats=stats,
+			extra_vars = extra_vars,
 			private_key_file = '/root/.ssh/id_rsa'
 		)
 		results = pb.run()
