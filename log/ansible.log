@@ -304,3 +304,182 @@ It is sometimes useful to re-run the command using -vvvv, which prints SSH debug
 2015-06-28 15:07:37,755 paramiko.transport userauth is OK
 2015-06-28 15:07:37,767 paramiko.transport Authentication (publickey) successful!
 2015-06-28 15:07:37,868 paramiko.transport EOF in transport thread
+2015-06-28 22:55:59,180 paramiko.transport starting thread (client mode): 0x4030350L
+2015-06-28 22:55:59,201 paramiko.transport Connected (version 2.0, client OpenSSH_5.3)
+2015-06-28 22:55:59,205 paramiko.transport kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 22:55:59,205 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 22:55:59,205 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 22:55:59,283 paramiko.transport Switch to new keys ...
+2015-06-28 22:55:59,284 paramiko.transport Adding ssh-rsa host key for 10.47.58.150: 5778062469ce979e25d6fc265afe1c2b
+2015-06-28 22:55:59,284 paramiko.transport Trying discovered key bde9e9313f0489647eff4aff91063011 in /root/.ssh/id_rsa
+2015-06-28 22:55:59,323 paramiko.transport userauth is OK
+2015-06-28 22:55:59,548 paramiko.transport Authentication (publickey) failed.
+2015-06-28 22:55:59,549 paramiko.transport userauth is OK
+2015-06-28 22:56:01,919 paramiko.transport Authentication (password) failed.
+2015-06-28 22:56:02,021 paramiko.transport EOF in transport thread
+2015-06-28 22:56:05,842 paramiko.transport starting thread (client mode): 0x4047190L
+2015-06-28 22:56:05,855 paramiko.transport Connected (version 2.0, client OpenSSH_5.3)
+2015-06-28 22:56:05,859 paramiko.transport kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 22:56:05,859 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 22:56:05,859 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 22:56:05,908 paramiko.transport Switch to new keys ...
+2015-06-28 22:56:05,909 paramiko.transport Adding ssh-rsa host key for 10.47.58.150: 5778062469ce979e25d6fc265afe1c2b
+2015-06-28 22:56:05,910 paramiko.transport Trying discovered key bde9e9313f0489647eff4aff91063011 in /root/.ssh/id_rsa
+2015-06-28 22:56:05,949 paramiko.transport userauth is OK
+2015-06-28 22:56:05,985 paramiko.transport Authentication (publickey) failed.
+2015-06-28 22:56:06,011 paramiko.transport userauth is OK
+2015-06-28 22:56:07,897 paramiko.transport Authentication (password) failed.
+2015-06-28 22:56:07,997 paramiko.transport EOF in transport thread
+2015-06-28 22:56:10,428 paramiko.transport starting thread (client mode): 0x4030f90L
+2015-06-28 22:56:10,432 paramiko.transport Connected (version 2.0, client OpenSSH_5.3)
+2015-06-28 22:56:10,433 paramiko.transport kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 22:56:10,433 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 22:56:10,433 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 22:56:10,475 paramiko.transport Switch to new keys ...
+2015-06-28 22:56:10,490 paramiko.transport Adding ssh-rsa host key for 10.47.58.150: 5778062469ce979e25d6fc265afe1c2b
+2015-06-28 22:56:10,492 paramiko.transport Trying discovered key bde9e9313f0489647eff4aff91063011 in /root/.ssh/id_rsa
+2015-06-28 22:56:10,515 paramiko.transport userauth is OK
+2015-06-28 22:56:10,557 paramiko.transport Authentication (publickey) failed.
+2015-06-28 22:56:10,597 paramiko.transport userauth is OK
+2015-06-28 22:56:12,360 paramiko.transport Authentication (password) failed.
+2015-06-28 22:56:12,460 paramiko.transport EOF in transport thread
+2015-06-28 22:56:15,097 paramiko.transport starting thread (client mode): 0x4047090L
+2015-06-28 22:56:15,112 paramiko.transport Connected (version 2.0, client OpenSSH_5.3)
+2015-06-28 22:56:15,117 paramiko.transport kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 22:56:15,117 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 22:56:15,117 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 22:56:15,173 paramiko.transport Switch to new keys ...
+2015-06-28 22:56:15,177 paramiko.transport Adding ssh-rsa host key for 10.47.58.150: 5778062469ce979e25d6fc265afe1c2b
+2015-06-28 22:56:15,178 paramiko.transport Trying discovered key bde9e9313f0489647eff4aff91063011 in /root/.ssh/id_rsa
+2015-06-28 22:56:15,213 paramiko.transport userauth is OK
+2015-06-28 22:56:15,253 paramiko.transport Authentication (publickey) failed.
+2015-06-28 22:56:15,279 paramiko.transport userauth is OK
+2015-06-28 22:56:17,397 paramiko.transport Authentication (password) failed.
+2015-06-28 22:56:17,498 paramiko.transport EOF in transport thread
+2015-06-28 22:57:09,856 paramiko.transport starting thread (client mode): 0x4030350L
+2015-06-28 22:57:09,869 paramiko.transport Connected (version 2.0, client OpenSSH_5.3)
+2015-06-28 22:57:09,871 paramiko.transport kex algos:['diffie-hellman-group-exchange-sha256', 'diffie-hellman-group-exchange-sha1', 'diffie-hellman-group14-sha1', 'diffie-hellman-group1-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] server encrypt:['aes128-ctr', 'aes192-ctr', 'aes256-ctr', 'arcfour256', 'arcfour128', 'aes128-cbc', '3des-cbc', 'blowfish-cbc', 'cast128-cbc', 'aes192-cbc', 'aes256-cbc', 'arcfour', 'rijndael-cbc@lysator.liu.se'] client mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] server mac:['hmac-md5', 'hmac-sha1', 'umac-64@openssh.com', 'hmac-sha2-256', 'hmac-sha2-512', 'hmac-ripemd160', 'hmac-ripemd160@openssh.com', 'hmac-sha1-96', 'hmac-md5-96'] client compress:['none', 'zlib@openssh.com'] server compress:['none', 'zlib@openssh.com'] client lang:[''] server lang:[''] kex follows?False
+2015-06-28 22:57:09,871 paramiko.transport Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2015-06-28 22:57:09,871 paramiko.transport using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2015-06-28 22:57:09,924 paramiko.transport Switch to new keys ...
+2015-06-28 22:57:09,929 paramiko.transport Adding ssh-rsa host key for 10.47.58.150: 5778062469ce979e25d6fc265afe1c2b
+2015-06-28 22:57:09,930 paramiko.transport Trying discovered key bde9e9313f0489647eff4aff91063011 in /root/.ssh/id_rsa
+2015-06-28 22:57:09,964 paramiko.transport userauth is OK
+2015-06-28 22:57:10,023 paramiko.transport Authentication (publickey) successful!
+2015-06-28 22:57:10,124 paramiko.transport EOF in transport thread
+2015-06-28 22:57:37,135 p=9850 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 22:57:37,135 p=9850 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 22:57:39,385 p=9850 u=root |  failed: [10.47.58.150] => {"cmd": "apt-get update '&&' apt-get install python-apt -y -q", "failed": true, "rc": 127}
+2015-06-28 22:57:39,385 p=9850 u=root |  stderr: /bin/sh: apt-get: command not found
+
+2015-06-28 22:57:39,385 p=9850 u=root |  msg: /bin/sh: apt-get: command not found
+2015-06-28 22:57:39,386 p=9850 u=root |  FATAL: all hosts have already failed -- aborting
+2015-06-28 23:00:46,014 p=9850 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:00:46,014 p=9850 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:00:46,026 p=9850 u=root |  FATAL: no hosts matched or all hosts have already failed -- aborting
+
+2015-06-28 23:01:18,537 p=9850 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:01:18,537 p=9850 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:01:18,545 p=9850 u=root |  FATAL: no hosts matched or all hosts have already failed -- aborting
+
+2015-06-28 23:01:58,057 p=16655 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:01:58,058 p=16655 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:01:58,079 p=16655 u=root |  fatal: [10.47.58.150] => error while evaluating conditional: ansible_os_family == "Debian"
+2015-06-28 23:01:58,079 p=16655 u=root |  FATAL: all hosts have already failed -- aborting
+2015-06-28 23:03:46,124 p=16655 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:03:46,124 p=16655 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-28 23:03:46,132 p=16655 u=root |  FATAL: no hosts matched or all hosts have already failed -- aborting
+
+2015-06-28 23:03:46,132 p=16655 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:03:46,139 p=16655 u=root |  FATAL: no hosts matched or all hosts have already failed -- aborting
+
+2015-06-28 23:04:07,901 p=18214 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:04:07,901 p=18214 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-28 23:04:10,072 p=18214 u=root |  ok: [10.47.58.150]
+2015-06-28 23:04:10,073 p=18214 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:04:10,082 p=18214 u=root |  skipping: [10.47.58.150]
+2015-06-28 23:04:10,082 p=18214 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:04:10,087 p=18214 u=root |  skipping: [10.47.58.150]
+2015-06-28 23:10:14,431 p=22898 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:10:14,431 p=22898 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-28 23:10:16,281 p=22898 u=root |  ok: [10.47.58.150]
+2015-06-28 23:10:16,282 p=22898 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:10:16,288 p=22898 u=root |  skipping: [10.47.58.150]
+2015-06-28 23:10:16,289 p=22898 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:10:16,294 p=22898 u=root |  skipping: [10.47.58.150]
+2015-06-28 23:14:52,329 p=22898 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:14:52,329 p=22898 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-28 23:14:54,132 p=22898 u=root |  ok: [10.47.58.150]
+2015-06-28 23:14:54,132 p=22898 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:14:54,138 p=22898 u=root |  skipping: [10.47.58.150]
+2015-06-28 23:14:54,139 p=22898 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:14:58,403 p=22898 u=root |  changed: [10.47.58.150]
+2015-06-28 23:16:34,576 p=22898 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:16:34,576 p=22898 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-28 23:16:36,473 p=22898 u=root |  ok: [10.47.58.150]
+2015-06-28 23:16:36,474 p=22898 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:16:36,479 p=22898 u=root |  skipping: [10.47.58.150]
+2015-06-28 23:16:36,480 p=22898 u=root |  TASK: [remove ntp] ************************************************************ 
+2015-06-28 23:16:36,993 p=22898 u=root |  ok: [10.47.58.150]
+2015-06-28 23:18:21,327 p=28760 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:18:21,328 p=28760 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-28 23:18:23,162 p=28760 u=root |  ok: [10.47.58.150]
+2015-06-28 23:18:23,163 p=28760 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 23:18:23,169 p=28760 u=root |  skipping: [10.47.58.150]
+2015-06-28 23:18:23,169 p=28760 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 23:18:27,745 p=28760 u=root |  changed: [10.47.58.150]
+2015-06-28 23:18:27,746 p=28760 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 23:18:27,777 p=28760 u=root |  failed: [10.47.58.150] => {"failed": true}
+2015-06-28 23:18:27,778 p=28760 u=root |  msg: could not find src=/root/Code/programmableAnsible/playbooks/files/ntp.conf
+2015-06-28 23:18:27,778 p=28760 u=root |  FATAL: all hosts have already failed -- aborting
+2015-06-28 23:19:14,893 p=28760 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:19:14,893 p=28760 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-28 23:19:14,898 p=28760 u=root |  FATAL: no hosts matched or all hosts have already failed -- aborting
+
+2015-06-28 23:19:14,898 p=28760 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 23:19:14,907 p=28760 u=root |  FATAL: no hosts matched or all hosts have already failed -- aborting
+
+2015-06-28 23:19:28,036 p=30370 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:19:28,036 p=30370 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-28 23:19:29,966 p=30370 u=root |  ok: [10.47.58.150]
+2015-06-28 23:19:29,967 p=30370 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 23:19:29,973 p=30370 u=root |  skipping: [10.47.58.150]
+2015-06-28 23:19:29,974 p=30370 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 23:19:30,695 p=30370 u=root |  ok: [10.47.58.150]
+2015-06-28 23:19:30,695 p=30370 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 23:19:30,704 p=30370 u=root |  failed: [10.47.58.150] => {"failed": true}
+2015-06-28 23:19:30,704 p=30370 u=root |  msg: could not find src=/root/Code/WolfHunterBackend/playbooks/$PWD/files/ntp.conf
+2015-06-28 23:19:30,704 p=30370 u=root |  FATAL: all hosts have already failed -- aborting
+2015-06-28 23:20:08,241 p=30370 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:20:08,241 p=30370 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-28 23:20:08,261 p=30370 u=root |  FATAL: no hosts matched or all hosts have already failed -- aborting
+
+2015-06-28 23:20:08,261 p=30370 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 23:20:08,270 p=30370 u=root |  FATAL: no hosts matched or all hosts have already failed -- aborting
+
+2015-06-28 23:20:21,239 p=31458 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:20:21,240 p=31458 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-28 23:20:21,710 p=31458 u=root |  ok: [10.47.58.150]
+2015-06-28 23:20:21,711 p=31458 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 23:20:21,717 p=31458 u=root |  skipping: [10.47.58.150]
+2015-06-28 23:20:21,717 p=31458 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 23:20:22,455 p=31458 u=root |  ok: [10.47.58.150]
+2015-06-28 23:20:22,456 p=31458 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 23:20:22,897 p=31458 u=root |  changed: [10.47.58.150]
+2015-06-28 23:20:22,898 p=31458 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-28 23:20:23,170 p=31458 u=root |  failed: [10.47.58.150] => {"failed": true}
+2015-06-28 23:20:23,171 p=31458 u=root |  msg: no service or tool found for: ntp
+2015-06-28 23:20:23,171 p=31458 u=root |  FATAL: all hosts have already failed -- aborting
+2015-06-28 23:22:34,172 p=576 u=root |  PLAY [all] ******************************************************************** 
+2015-06-28 23:22:34,172 p=576 u=root |  GATHERING FACTS *************************************************************** 
+2015-06-28 23:22:36,039 p=576 u=root |  ok: [10.47.58.150]
+2015-06-28 23:22:36,041 p=576 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 23:22:36,055 p=576 u=root |  skipping: [10.47.58.150]
+2015-06-28 23:22:36,055 p=576 u=root |  TASK: [install ntp] *********************************************************** 
+2015-06-28 23:22:36,786 p=576 u=root |  ok: [10.47.58.150]
+2015-06-28 23:22:36,786 p=576 u=root |  TASK: [write our ntp.conf] **************************************************** 
+2015-06-28 23:22:37,164 p=576 u=root |  ok: [10.47.58.150]
+2015-06-28 23:22:37,164 p=576 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-28 23:22:37,172 p=576 u=root |  skipping: [10.47.58.150]
+2015-06-28 23:22:37,173 p=576 u=root |  TASK: [start ntp] ************************************************************* 
+2015-06-28 23:22:37,562 p=576 u=root |  changed: [10.47.58.150]

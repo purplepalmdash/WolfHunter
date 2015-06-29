@@ -1,9 +1,14 @@
 ---
 - hosts: all
   sudo: yes
-  gather_facts: no
+  gather_facts: yes
 
   tasks:
 
   - name: remove ntp
     apt: name=ntp state=absent
+    when: ansible_os_family == "Debian"
+
+  - name: remove ntp
+    yum: name=ntp state=absent
+    when: ansible_os_family == "RedHat"

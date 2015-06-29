@@ -65,8 +65,8 @@ IP Address: <input type="text" name="IpAddress"><br>
 Gateway: <input type="text" name="Gateway"><br>
 Hostname: <input type="text" name="Hostname"><br>
 Profile List: <select name="ProfileList">
-%for distro in distros:
-<option value={{distro}}>{{distro}}</option>
+%for profile in profiles:
+<option value={{profile}}>{{profile}}</option>
 %end
 </select>
 <br>

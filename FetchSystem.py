@@ -83,8 +83,11 @@ def list_system():
 
 	# Append each record of systems into the AllSystem list.
 	for i in CobblerServer.get_systems():
-		single_record = (i['name'] , i['interfaces']['eth0']['mac_address'] , i['interfaces']['eth0']['ip_address'] , i['gateway'] , i['hostname'] , i['profile'] , i['interfaces']['eth0']['dns_name'] , str(i['ctime']) , str(i['mtime']))
-		AllSystems.append(single_record)
+		try:
+			single_record = (i['name'] , i['interfaces']['eth0']['mac_address'] , i['interfaces']['eth0']['ip_address'] , i['gateway'] , i['hostname'] , i['profile'] , i['interfaces']['eth0']['dns_name'] , str(i['ctime']) , str(i['mtime']))
+			AllSystems.append(single_record)
+		except Exception, e:
+			print e
 
 	# Append SystemTableName at the first position of the AllSystems
 	AllSystems.insert(0, SystemTableName)
@@ -133,25 +136,19 @@ def new_system():
 		# The Profiles should be retrived from the Cobbler System, and use template for rendering it.
 		# Retrieve the profile list(distro list)
 		handle = capi.BootAPI()
-		# distros holds all of the distros which could be fetched via `cobbler profile list`
-		distros = []
+		# profiles holds all of the distros which could be fetched via `cobbler profile list`, notice the differences between distros
+		profiles = []
 		namelist = []
 		maclist = []
 		iplist = []
-		for x in handle.distros():
-			distros += [x.name]
+		for x in handle.profiles():
+			profiles += [x.name]
 		for i in CobblerServer.get_systems():
-			#namelist += [i['name']]
 			namelist += [i['name']]
-			#print i['name']
 			maclist += [i['interfaces']['eth0']['mac_address']]
-			#print i['interfaces']['eth0']['mac_address']
 			iplist += [i['interfaces']['eth0']['ip_address']]
-			#print i['interfaces']['eth0']['ip_address']
 		# Check the name/ip_address exists or not in this page, using javascript?
-		for i in namelist:
-			print i
-		output = template('./template/newsystemtpl', distros=distros, namelist=namelist, maclist=maclist, iplist=iplist)
+		output = template('./template/newsystemtpl', profiles=profiles, namelist=namelist, maclist=maclist, iplist=iplist)
 		return output
 
 # Function for wrapping the Cobbler's API for inserting the definition into the Cobber System.
