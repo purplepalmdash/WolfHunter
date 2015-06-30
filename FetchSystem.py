@@ -21,9 +21,6 @@
 
 # Use Cobbler API
 import xmlrpclib
-# Use cobbler BootAPI, Notice this method is not suggested from version 2.0
-import cobbler.api
-import cobbler
 # Use bottle, for rendering HTML
 from bottle import route, run, debug, template, view, request, redirect, static_file
 # Beautify json output
@@ -145,15 +142,13 @@ def new_system():
 		redirect('/Node/'+Added_NodeName)
 	else:
 		# The Profiles should be retrived from the Cobbler System, and use template for rendering it.
-		# Retrieve the profile list(distro list)
-		handle = cobbler.api.BootAPI()
 		# profiles holds all of the distros which could be fetched via `cobbler profile list`, notice the differences between distros
 		profiles = []
 		namelist = []
 		maclist = []
 		iplist = []
-		for x in handle.profiles():
-			profiles += [x.name]
+		for i in CobblerServer.get_profiles():
+			profiles += [i['name']]
 		for i in CobblerServer.get_systems():
 			namelist += [i['name']]
 			maclist += [i['interfaces']['eth0']['mac_address']]
@@ -265,11 +260,11 @@ class clientThread(threading.Thread):
         def __init__(self, NodeName, playbook):
 		self.domain_name = NodeName
 		self.playbook = playbook
-		handle = cobbler.api.BootAPI()
-		# Possible Risk(if there are other ip address? or the name is not eth0, like enp0sxx?)
-		for x in handle.find_system(hostname=self.domain_name, return_list=True):
-			self.public_ip_address = x.interfaces['eth0']['ip_address']
-                threading.Thread.__init__(self)
+		# Get the Node's corresponding IP Address and use it for deployment
+		for i in CobblerServer.get_systems():
+			if i['name'] == NodeName:
+				self.public_ip_address = i['interfaces']['eth0']['ip_address']
+		threading.Thread.__init__(self)
 
         def run(self):
                 self.handle_task()

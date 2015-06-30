@@ -96,7 +96,7 @@
       BindAddress: 0.0.0.0
 
     CSManagement:
-      ManagementIP: 10.47.58.152
+      ManagementIP: 10.47.58.153
       SecondaryMount: /secondary
       NFSHost: 10.47.58.2
       NFSSecondaryShare: /home/export
