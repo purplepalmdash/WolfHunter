@@ -22,7 +22,8 @@
 # Use Cobbler API
 import xmlrpclib
 # Use cobbler BootAPI, Notice this method is not suggested from version 2.0
-import cobbler.api as capi
+import cobbler.api
+import cobbler
 # Use bottle, for rendering HTML
 from bottle import route, run, debug, template, view, request, redirect, static_file
 # Beautify json output
@@ -132,7 +133,6 @@ def new_system():
 		Added_DnsName = request.GET.get('DnsName','').strip()
 		# Really insert into the cobbler backend
 		insert_system_to_cobbler(Added_NodeName, Added_MacAddress, Added_IpAddress, Added_Gateway, Added_Hostname, Added_Profile, Added_DnsName)
-		# Sync for updating.
 
 		# Call Wrapped Cobbler function for really add the system into the Cobbler System.
 		# TODO: We may encouter the node has been defined in the system, thus we have to hint for modifying or cancel.
@@ -146,7 +146,7 @@ def new_system():
 	else:
 		# The Profiles should be retrived from the Cobbler System, and use template for rendering it.
 		# Retrieve the profile list(distro list)
-		handle = capi.BootAPI()
+		handle = cobbler.api.BootAPI()
 		# profiles holds all of the distros which could be fetched via `cobbler profile list`, notice the differences between distros
 		profiles = []
 		namelist = []
@@ -174,26 +174,19 @@ def insert_system_to_cobbler(NodeName, MacAddress, IpAddress, Gateway, Hostname,
 	CobblerServer.modify_system(system_id, "hostname", Hostname, token)
 	# After modify, sync them to the system
 	CobblerServer.save_system(system_id, token)
+	# Don't forget to sync
+	CobblerServer.sync(token)
 
 # Pages for serving a single node
 @route('/Node/<NodeName:path>', method='GET')
 def node_item(NodeName):
 	# 1.1 Use NodeName for retriving the IP Address
-	# use a handle for get the ip address of the specified NodeName
-	handle = capi.BootAPI()
-	# Possible Risk(if there are other ip address? or the name is not eth0, like enp0sxx?)
-	# Only we got the available IP Address then we can continue to deploy.
-	NodeIP = ""
-	while True:
-		# Find out the ip address corresponding to the NodeName.
-		for x in handle.find_system(hostname=NodeName, return_list=True):
-			NodeIP = x.interfaces['eth0']['ip_address']
-			#print NodeIP
-		# none-empty string will breakout.
-		if NodeIP:
-			print "Yes there are something, so quit!!!"
-			break
+	# use xmlrpcapi for getting the ip address
+	for i in CobblerServer.get_systems():
+		if i['name'] == NodeName:
+			NodeIP = i['interfaces']['eth0']['ip_address']
 	print NodeIP
+
 	# 1.2 Just use ssh to detect whether remote machine is ready for be fucked or not. 
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	try:
@@ -204,8 +197,7 @@ def node_item(NodeName):
 			ssh = paramiko.SSHClient()
 			ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 			ssh.connect(NodeIP, username="root", password="engine")
-			# Everything is OK, Go to 3, start fucking!
-			#return "<p>Saw this page means you can fuck freely!!!</p>"
+			#  Everything is OK, Go to 3, start deploying!
 		except Exception, e:
 			# 2.2 flirting failed, check your own reason. 
 			print e
@@ -273,7 +265,7 @@ class clientThread(threading.Thread):
         def __init__(self, NodeName, playbook):
 		self.domain_name = NodeName
 		self.playbook = playbook
-		handle = capi.BootAPI()
+		handle = cobbler.api.BootAPI()
 		# Possible Risk(if there are other ip address? or the name is not eth0, like enp0sxx?)
 		for x in handle.find_system(hostname=self.domain_name, return_list=True):
 			self.public_ip_address = x.interfaces['eth0']['ip_address']
@@ -331,4 +323,3 @@ class clientThread(threading.Thread):
 debug(True)
 
 run(reloader=True, port=8848, host='0.0.0.0')
-
