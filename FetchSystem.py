@@ -58,7 +58,7 @@ global DeployStarted
 DeployStarted=0
 
 # extra vars
-extra_vars = {'CSManagement.ManagementIP': "10.47.58.153"}
+extra_vars = {'CSManagement.ManagementIP': "10.47.58.154"}
 
 ###  Definitions for Ansible
 # Boilerplace callbacks for stdout/stderr and log output
