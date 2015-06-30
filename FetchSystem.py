@@ -58,7 +58,10 @@ global DeployStarted
 DeployStarted=0
 
 # extra vars
-extra_vars = {'CSManagement.ManagementIP': "10.47.58.154"}
+#vars1={"CSManagement":{"ManagementIP":"10.47.58.154"}}
+#print vars1["CSManagement"]["ManagementIP"]
+# extra_vars = {"vars":{"CSManagement":{"ManagementIP":"10.47.58.154"}}}
+#extra_vars = {'CSManagement.ManagementIP': "10.47.58.154"}
 
 ###  Definitions for Ansible
 # Boilerplace callbacks for stdout/stderr and log output
@@ -291,6 +294,7 @@ class clientThread(threading.Thread):
 		hosts.close()
 		
 		# First we will test install/uninstall the ntp server on its server.
+		extra_vars_managementIP = {"vars":{"CSManagement":{"ManagementIP":self.public_ip_address}}}
 		pb = PlayBook(
 			playbook = self.playbook, 
 			host_list = hosts.name,     # Our hosts, the rendered inventory file
@@ -298,7 +302,7 @@ class clientThread(threading.Thread):
 			callbacks = playbook_cb,
 			runner_callbacks = runner_cb,
 			stats=stats,
-			extra_vars = extra_vars,
+			extra_vars = extra_vars_managementIP,
 			private_key_file = '/root/.ssh/id_rsa'
 		)
 		results = pb.run()

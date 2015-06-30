@@ -385,7 +385,8 @@
     # Configure CloudStack DB
     #
     - name: Configure CloudStack database connectvity
-      shell: cloudstack-setup-databases {{ CSMySQL.CloudDBUser }}:{{ CloudDBPass | mandatory }}@{{ CSMySQL.CloudDBHost }} --deploy-as={{ CSMySQL.MySQLRoot }}:{{ MySQLPass | mandatory }} -i {{ CSManagement.ManagementIP  }}>> /root/cs_dbinstall.out 2>&1
+      #shell: cloudstack-setup-databases {{ CSMySQL.CloudDBUser }}:{{ CloudDBPass | mandatory }}@{{ CSMySQL.CloudDBHost }} --deploy-as={{ CSMySQL.MySQLRoot }}:{{ MySQLPass | mandatory }} -i {{ CSManagement.ManagementIP  }}>> /root/cs_dbinstall.out 2>&1
+      shell: cloudstack-setup-databases {{ CSMySQL.CloudDBUser }}:{{ CloudDBPass | mandatory }}@{{ CSMySQL.CloudDBHost }} --deploy-as={{ CSMySQL.MySQLRoot }}:{{ MySQLPass | mandatory }} -i `ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'`>> /root/cs_dbinstall.out 2>&1
       tags:
         - csmanagement
 
@@ -393,7 +394,8 @@
     # Configure CloudStack DB on additional management server
     #
     - name: Configure CloudStack database connectvity on additional management server
-      shell: cloudstack-setup-databases {{ CSMySQL.CloudDBUser }}:{{ CloudDBPass | mandatory }}@{{ CSMySQL.CloudDBHost }} -i {{ CSManagement.ManagementIP  }}>> /root/cs_dbinstall.out 2>&1
+      #shell: cloudstack-setup-databases {{ CSMySQL.CloudDBUser }}:{{ CloudDBPass | mandatory }}@{{ CSMySQL.CloudDBHost }} -i {{ CSManagement.ManagementIP  }}>> /root/cs_dbinstall.out 2>&1
+      shell: cloudstack-setup-databases {{ CSMySQL.CloudDBUser }}:{{ CloudDBPass | mandatory }}@{{ CSMySQL.CloudDBHost }} -i `ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'`>> /root/cs_dbinstall.out 2>&1
       tags:
         - csmanagementadd
 
