@@ -57,7 +57,7 @@ FinishDeploying=0
 global DeployStarted
 DeployStarted=0
 
-# extra vars
+####  extra vars , I don't know how to put these extra vars into ansible books? 
 #vars1={"CSManagement":{"ManagementIP":"10.47.58.154"}}
 #print vars1["CSManagement"]["ManagementIP"]
 # extra_vars = {"vars":{"CSManagement":{"ManagementIP":"10.47.58.154"}}}
