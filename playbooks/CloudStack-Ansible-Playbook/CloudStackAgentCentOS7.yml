@@ -62,7 +62,7 @@
   #  Configure qemu.conf
   #
   - name: Configure the qemu.conf
-    shell: sed -i 's/#vnc_listen = "0.0.0.0"/vnc_listen = "0.0.0.0"/g' /etc/libvirt/qemu.conf
+    shell: sed -i 's/#vnc_listen = "0.0.0.0"/vnc_listen = "0.0.0.0"/g' /etc/libvirt/qemu.conf && sed -i 's/cgroup_controllers=["cpu"]/#cgroup_controllers=["cpu"]/g'
     run_once: true
     tags:
       - base
@@ -88,6 +88,17 @@
       - base
       - config-cloudstack
 
+  #######################################################
+  #  Configure serviceConfig.py
+  #
+  #
+  - name: Configure the serviceConfig.py file
+    shell: sed -i 's/cfo.addEntry("cgroup_controllers", "[\"cpu\"]")/#cfo.addEntry("cgroup_controllers", "[\"cpu\"]")/g' / /usr/lib64/python2.7/site-packages/cloudutils/serviceConfig.py
+    run_once: true
+    tags:
+      - base
+      - config-cloudstack
+ 
   #######################################################
   #  Restart libvirtd
   #
