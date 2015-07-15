@@ -100,7 +100,9 @@
       SecondaryMount: /secondary
       NFSHost: 10.47.58.2
       NFSSecondaryShare: /home/export
-      SysTemplateURLurl43: http://10.47.58.2/systemvm64template-2014-06-23-master-xen.vhd.bz2
+      # SysTemplateURLurl43: http://10.47.58.2/systemvm64template-2014-06-23-master-xen.vhd.bz2
+      # SysTemplateURLurl44: http://10.47.58.2/systemvm64template-2014-06-23-master-xen.vhd.bz2
+      SysTemplateURLurl43: http://10.47.58.2/systemvm64template-4.4.1-7-kvm.qcow2.bz2 
       SysTemplateURLurl44: http://10.47.58.2/systemvm64template-4.4.1-7-kvm.qcow2.bz2 
       SysTemplateURLhv: xenserver
       VhdutilURL: http://10.47.58.2/vhd-util
@@ -150,7 +152,7 @@
     # Configure Repository For PIP
     #
     - name: Copy To Destination
-      copy: src=/root/Code/Ansible/CloudStack-Ansible-Playbook/templates/pipcache2.tar.gz dest=/root/pipcache2.tar.gz owner=root group=root mode=0644
+      copy: src=templates/pipcache2.tar.gz dest=/root/pipcache2.tar.gz owner=root group=root mode=0644
       #notify: Copy pipcache2.tar.gz to /root/
       tags:
         - pipCopy

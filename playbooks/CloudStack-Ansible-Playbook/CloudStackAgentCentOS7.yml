@@ -62,7 +62,7 @@
   #  Configure qemu.conf
   #
   - name: Configure the qemu.conf
-    shell: sed -i 's/#vnc_listen = "0.0.0.0"/vnc_listen = "0.0.0.0"/g' /etc/libvirt/qemu.conf && sed -i 's/cgroup_controllers=["cpu"]/#cgroup_controllers=["cpu"]/g'
+    shell: sed -i 's/#vnc_listen = "0.0.0.0"/vnc_listen = "0.0.0.0"/g' /etc/libvirt/qemu.conf && sed -i 's/cgroup_controllers=["cpu"]/#cgroup_controllers=["cpu"]/g' /etc/libvirt/qemu.conf
     run_once: true
     tags:
       - base
@@ -89,16 +89,14 @@
       - config-cloudstack
 
   #######################################################
-  #  Configure serviceConfig.py
+  #  Remove the serviceConfig.py's configuration on cgroup_controllers
   #
-  #
-  - name: Configure the serviceConfig.py file
-    shell: sed -i 's/cfo.addEntry("cgroup_controllers", "[\"cpu\"]")/#cfo.addEntry("cgroup_controllers", "[\"cpu\"]")/g' / /usr/lib64/python2.7/site-packages/cloudutils/serviceConfig.py
-    run_once: true
+  - name: Remove cgroup_controllers configuration
+    shell: sed -i '/cgroup_controllers/d' /usr/lib64/python2.7/site-packages/cloudutils/serviceConfig.py
     tags:
       - base
       - config-cloudstack
- 
+
   #######################################################
   #  Restart libvirtd
   #
@@ -111,7 +109,7 @@
   #######################################################
   # Configure Hosts
   #
-  # - name: Configure Hosts
-  #   shell: ifconfig | awk -v MYHOST=$HOSTNAME '/inet addr/{print substr($2,6),"\t",MYHOST}'>>/etc/hosts 
-  #   tags:
-  #     - base
+  - name: Configure Hosts
+    shell: ifconfig | awk -v MYHOST=$HOSTNAME '/inet addr/{print substr($2,6),"\t",MYHOST}'>>/etc/hosts 
+    tags:
+      - base
