@@ -100,10 +100,8 @@
       SecondaryMount: /secondary
       NFSHost: 10.47.58.2
       NFSSecondaryShare: /home/export
-      SysTemplateURLurl43: http://10.47.58.2/systemvm64template-2014-06-23-master-xen.vhd.bz2
-      SysTemplateURLurl44: http://10.47.58.2/systemvm64template-4.4.1-7-kvm.qcow2.bz2 
-      SysTemplateURLhv: xenserver
-      VhdutilURL: http://10.47.58.2/vhd-util
+      SysTemplateURLurl45: http://10.47.58.2/systemvm64template-4.5-kvm.qcow2.bz2
+      SysTemplateURLhv: kvm
 
   #######################################################################################
   # Tasks
@@ -128,8 +126,7 @@
     # Configure Repository For PIP
     #
     - name: Copy To Destination
-      copy: src=/root/Code/Ansible/CloudStack-Ansible-Playbook/templates/pipcache2.tar.gz dest=/root/pipcache2.tar.gz owner=root group=root mode=0644
-      #notify: Copy pipcache2.tar.gz to /root/
+      copy: src=templates/pipcache2.tar.gz dest=/root/pipcache2.tar.gz owner=root group=root mode=0644
       tags:
         - pipCopy
         - pip
@@ -148,7 +145,7 @@
     #  Configure CloudStack yum repo 
     #
     - name: Configure CloudStack repo
-      template: src=templates/cloudstack.repo.j2 dest=/etc/yum.repos.d/cloudstack.repo mode=0644
+      template: src=templates/45CSC6Manage.repo.j2 dest=/etc/yum.repos.d/cloudstack.repo mode=0644
       tags:
         - base
         - yumrepo
@@ -337,19 +334,6 @@
         - csmanagementadd
 
     #######################################################
-    # Install vhd-util on management server
-    #
-    - name: Download vhd-util for Xenserver hypervisors
-      get_url: url={{ CSManagement.VhdutilURL }} dest={{ item }} mode=0755
-      with_items:
-        - /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/
-        - /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/xenserver60/
-        - /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/xenserver62/
-      tags:
-        - csmanagement
-        - csmanagementadd
-
-    #######################################################
     # Install cloudmonkey
     #
     - name: Install CloudMonkey
@@ -405,21 +389,11 @@
         - secstorage
         
     #######################################################
-    # Download and install CS43 system VM template
+    # Download and install CS45 system VM template
     #
-    - name: Download CloudStack 4.3 system VM template
-      shell: /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m {{ CSManagement.SecondaryMount }} -u {{ CSManagement.SysTemplateURLurl43 }} -h {{ CSManagement.SysTemplateURLhv }} -F
-      when: TemplateFolderSize.stdout|int < 1024 and CSVersion == "4.3"
-      tags:
-        - csmanagement
-        - secstorage
-        
-    #######################################################
-    # Download and install CS44 system VM template
-    #
-    - name: Download CloudStack 4.4 system template
-      shell: /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m {{ CSManagement.SecondaryMount }} -u {{ CSManagement.SysTemplateURLurl44 }} -h {{ CSManagement.SysTemplateURLhv }} -F
-      when: TemplateFolderSize.stdout|int < 1024 and CSVersion == "4.4"
+    - name: Download CloudStack 4.5 system template
+      shell: /usr/share/cloudstack-common/scripts/storage/secondary/cloud-install-sys-tmplt -m {{ CSManagement.SecondaryMount }} -u {{ CSManagement.SysTemplateURLurl45 }} -h {{ CSManagement.SysTemplateURLhv }} -F
+      #when: TemplateFolderSize.stdout|int < 1024 and CSVersion == "4.5"
       tags:
         - csmanagement
         - secstorage
