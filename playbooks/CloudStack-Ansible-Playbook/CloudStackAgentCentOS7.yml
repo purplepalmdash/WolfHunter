@@ -110,6 +110,7 @@
   # Configure Hosts
   #
   - name: Configure Hosts
-    shell: ifconfig | awk -v MYHOST=$HOSTNAME '/inet addr/{print substr($2,6),"\t",MYHOST}'>>/etc/hosts 
+    shell: ifconfig | awk -v MYHOST=$HOSTNAME '/inet/{print substr($2,1),"\t",MYHOST}'>>/etc/hosts
+    #ifconfig | awk -v MYHOST=$HOSTNAME '/inet addr/{print substr($2,6),"\t",MYHOST}'>>/etc/hosts 
     tags:
       - base
